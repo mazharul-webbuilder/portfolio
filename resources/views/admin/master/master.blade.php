@@ -187,9 +187,7 @@
                     <div class="dropdown-menu dropdown-menu-right">
                         <!-- item-->
                         <a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle mr-1"></i> Profile</a>
-                        <a class="dropdown-item" href="#"><i class="bx bx-wallet font-size-16 align-middle mr-1"></i> My Wallet</a>
-                        <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-right">11</span><i class="bx bx-wrench font-size-16 align-middle mr-1"></i> Settings</a>
-                        <a class="dropdown-item" href="#"><i class="bx bx-lock-open font-size-16 align-middle mr-1"></i> Lock screen</a>
+                        <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-right"></span><i class="bx bx-wrench font-size-16 align-middle mr-1"></i> Settings</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item text-danger" href="#" onclick="event.preventDefault(); document.getElementById('adminlogout{{\Illuminate\Support\Facades\Auth::guard('admin')->user()->id}}').submit();">
                             <i class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Logout</a>
@@ -261,11 +259,11 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-6">
-                        <script>document.write(new Date().getFullYear())</script> © YA.
+                        <script>document.write(new Date().getFullYear())</script> © Irozen.
                     </div>
                     <div class="col-sm-6">
                         <div class="text-sm-right d-none d-sm-block">
-                            Irozen Limited
+                            Irozen
                         </div>
                     </div>
                 </div>
