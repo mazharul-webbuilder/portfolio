@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('admin_details', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('admin_id')->constrained('admins')->cascadeOnDelete();
+            $table->string('type');
+            $table->string('icon')->nullable();
+            $table->string('link_url')->nullable();
             $table->timestamps();
         });
     }
