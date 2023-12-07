@@ -115,11 +115,12 @@
                 success: function (data) {
                     if (data.response === 200) {
                         if (data.type === "success") {
-                            window.location.href = "{{route('admin.dashboard')}}"
                             Toast.fire({
                                 icon: data.type,
                                 title: data.message
                             })
+                            window.location.href = "{{route('admin.dashboard')}}"
+
                         } else {
                             Toast.fire({
                                 icon: data.type,

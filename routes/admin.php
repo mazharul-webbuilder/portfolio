@@ -16,8 +16,11 @@ Route::middleware('guest')->prefix('admin/')->name('admin.')->group(function (){
     Route::post('login/auth', [LoginController::class, 'authCheck'])->name('auth.check');
 });
 
-// Dashboard
+// Auth Routes
 Route::middleware('admin')->prefix('admin/')->name('admin.')->group(function (){
+    // Logout
+    Route::post('logout', LogoutController::class)->name('logout');
+
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
