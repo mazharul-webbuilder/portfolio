@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(MenuSeeder::class);
         $this->call(MetaSeeder::class);
         $this->call(AdminDetailSeeder::class);
+        $this->call(AdminSocialSeeder::class);
         Model::reguard();
     }
 }

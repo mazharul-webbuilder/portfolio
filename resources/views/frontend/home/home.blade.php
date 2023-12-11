@@ -46,11 +46,11 @@
                                         <div class="social-share-inner-left">
                                             <span class="title">find with me</span>
                                             <ul class="social-share d-flex liststyle">
-                                                <li class="facebook"><a href="#"><i data-feather="facebook"></i></a>
+                                                <li class="facebook"><a href="{{$adminFacebook->link}}"><i data-feather="facebook"></i></a>
                                                 </li>
-                                                <li class="instagram"><a href="#"><i data-feather="instagram"></i></a>
+                                                <li class="instagram"><a href="{{$adminInstagram->link}}"><i data-feather="instagram"></i></a>
                                                 </li>
-                                                <li class="linkedin"><a href="#"><i data-feather="linkedin"></i></a>
+                                                <li class="linkedin"><a href="{{$adminLinkedin->link}}"><i data-feather="linkedin"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -61,7 +61,7 @@
                                             <ul class="skill-share d-flex liststyle">
                                                 <li><img src="{{asset('frontend/assets')}}/images/icons/icons-01.png" alt="Icons Images"></li>
                                                 <li><img src="{{asset('frontend/assets')}}/images/icons/icons-02.png" alt="Icons Images"></li>
-                                                <li><img src="{{asset('frontend/assets')}}/images/icons/icons-03.png" alt="Icons Images"></li>
+                                                <li><img src="{{asset('frontend/assets')}}/images/icons/icons-13.png" alt="Icons Images"></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -2925,13 +2925,6 @@
             </div>
         </div>
         <!-- Back to top end -->
-        <!-- Start Right Demo  -->
-        <div class="rn-right-demo">
-            <button class="demo-button">
-                <span class="text">Demos</span>
-            </button>
-        </div>
-        <!-- End Right Demo  -->
 
         <!-- Start Modal Area  -->
         <div class="demo-modal-area">
