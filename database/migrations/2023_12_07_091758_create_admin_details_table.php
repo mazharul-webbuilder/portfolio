@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('admin_details', function (Blueprint $table) {
             $table->id();
             $table->foreignId('admin_id')->constrained('admins')->cascadeOnDelete();
-            $table->string('type');
-            $table->string('icon')->nullable();
-            $table->string('link_url')->nullable();
+            $table->string('small_title');
+            $table->string('name_to_show');
+            $table->string('slogan_1');
+            $table->string('slogan_2');
+            $table->string('slogan_3');
+            $table->string('short_description');
             $table->timestamps();
         });
     }
