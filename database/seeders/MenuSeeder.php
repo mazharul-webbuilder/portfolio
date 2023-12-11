@@ -52,7 +52,7 @@ class MenuSeeder extends Seeder
                 'updated_at' => Carbon::now()
             ],[
                 'name' => 'Contact',
-                'constant_name' => 'contact',
+                'constant_name' => 'contacts',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],

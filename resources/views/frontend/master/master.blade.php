@@ -44,14 +44,9 @@
                 <nav id="sideNav" class="mainmenu-nav navbar-example2 d-none d-xl-block onepagenav">
                     <!-- Start Mainmanu Nav -->
                     <ul class="primary-menu nav nav-pills me-5">
-                        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#resume">Resume</a></li>
-                        <li class="nav-item current"><a class="nav-link" href="http://localhost:3000/#clients">Clients</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#blog">blog</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contacts">Contact</a></li>
+                        @foreach(DB::table('menus')->latest()->get() as $menu)
+                            <li class="nav-item"><a class="nav-link" href="#{{$menu->constant_name}}">{{$menu->name}}</a></li>
+                        @endforeach
                     </ul>
                     <!-- End Mainmanu Nav -->
                 </nav>
