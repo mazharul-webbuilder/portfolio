@@ -31,7 +31,7 @@
         <div class="col-lg-2 col-6">
             <div class="header-left">
                 <div class="logo">
-                    <a href="index.html">
+                    <a href="{{route('home')}}">
                         <img src="{{asset('frontend/assets')}}/images/logo/logo.png" alt="logo">
                     </a>
                 </div>
@@ -61,7 +61,7 @@
     <div class="inner">
         <div class="menu-top">
             <div class="menu-header">
-                <a class="logo" href="index.html">
+                <a class="logo" href="{{route('home')}}">
                     <img src="{{asset('frontend/assets')}}/images/logo/logos-circle.png" alt="Personal Portfolio">
                 </a>
                 <div class="close-button">
@@ -117,12 +117,12 @@
                 <div class="footer-area text-center">
 
                     <div class="logo">
-                        <a href="index.html">
+                        <a href="{{route('home')}}">
                             <img src="{{asset('frontend/assets')}}/images/logo/logo-vertical.png" alt="logo">
                         </a>
                     </div>
 
-                    <p class="description mt--30">© 2022. All rights reserved by <a target="_blank" href="https://themeforest.net/user/rainbow-themes/portfolio">Rainbow-Themes.</a></p>
+                    <p class="description mt--30">© 2022. All rights reserved by <a href="javascript:void(0)">{{config('app.name')}}.</a></p>
                 </div>
             </div>
         </div>
