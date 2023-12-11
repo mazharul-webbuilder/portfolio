@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(MetaSeeder::class);
         $this->call(AdminDetailSeeder::class);
         $this->call(AdminSocialSeeder::class);
+        $this->call(FeatureSeeder::class);
         Model::reguard();
     }
 }
