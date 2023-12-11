@@ -13,6 +13,6 @@ class HomeController extends Controller
     */
     public function index(): View
     {
-       dd(url('/admin/login'));
+       return \view('frontend.home.home');
     }
 }
