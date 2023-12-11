@@ -21,16 +21,16 @@
                             <div class="content">
                                 <div class="inner">
                                     <span class="subtitle">Welcome to my world</span>
-                                    <h1 class="title">Hi, I’m <span>Jone Lee</span><br>
+                                    <h1 class="title">Hi, I’m <span>{{$adminDetails->name_to_show}}</span><br>
                                         <span class="header-caption" id="page-top">
                                             <!-- type headline start-->
                                             <span class="cd-headline clip is-full-width">
                                                 <span>a </span>
                                                 <!-- ROTATING TEXT -->
                                         <span class="cd-words-wrapper">
-                                                    <b class="is-visible">Developer.</b>
-                                                    <b class="is-hidden">Professional Coder.</b>
-                                                    <b class="is-hidden">Developer.</b>
+                                                    <b class="is-visible">{{$adminDetails->slogan_1}}.</b>
+                                                    <b class="is-hidden">{{$adminDetails->slogan_2}}.</b>
+                                                    <b class="is-hidden">{{$adminDetails->slogan_3}}.</b>
                                                 </span>
                                         </span>
                                             <!-- type headline end -->
@@ -38,10 +38,7 @@
                                     </h1>
 
                                     <div>
-                                        <p class="description">I use animation as a third dimension by which to simplify
-                                            experiences and kuiding thro each and every interaction. I’m not adding
-                                            motion
-                                            just to spruce things up, but doing it in ways that.</p>
+                                        <p class="description">{{$adminDetails->short_description}}.</p>
                                     </div>
                                 </div>
                                 <div class="row">
