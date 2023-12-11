@@ -44,7 +44,7 @@
                 <nav id="sideNav" class="mainmenu-nav navbar-example2 d-none d-xl-block onepagenav">
                     <!-- Start Mainmanu Nav -->
                     <ul class="primary-menu nav nav-pills me-5">
-                        @foreach(DB::table('menus')->latest()->get() as $menu)
+                        @foreach(DB::table('menus')->where('status', 1)->latest()->get() as $menu)
                             <li class="nav-item"><a class="nav-link" href="#{{$menu->constant_name}}">{{$menu->name}}</a></li>
                         @endforeach
                     </ul>
