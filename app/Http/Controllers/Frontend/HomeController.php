@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\AdminDetail;
 use App\Models\AdminSocial;
 use App\Models\Blog;
+use App\Models\Education;
 use App\Models\Feature;
 use App\Models\Meta;
 use App\Models\Portfolio;
@@ -43,6 +44,8 @@ class HomeController extends Controller
 
         $portfolios = Portfolio::latest()->get();
 
+        $educations = Education::latest()->get();
+
        return \view('frontend.home.home',
            compact('adminDetails',
                'adminFacebook',
@@ -54,7 +57,8 @@ class HomeController extends Controller
                'staticPricing',
                'standardPricing',
                'premiumPricing',
-                'portfolios'
+                'portfolios',
+                'educations',
            ));
     }
 }

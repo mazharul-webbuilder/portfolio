@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('title');
-            $table->date('session_from');
-            $table->date('session_to');
+            $table->string('session_from');
+            $table->string('session_to');
             $table->double('score');
+            $table->text('description');
             $table->timestamps();
         });
     }

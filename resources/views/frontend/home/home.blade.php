@@ -204,67 +204,24 @@
                                                 <span class="subtitle">2007 - 2010</span>
                                                 <h4 class="maintitle">Education Quality</h4>
                                                 <div class="experience-list">
-
+                                                    @foreach($educations as $education)
                                                     <!-- Start Single List  -->
                                                     <div class="resume-single-list">
                                                         <div class="inner">
                                                             <div class="heading">
                                                                 <div class="title">
-                                                                    <h4>Personal Portfolio April Fools</h4>
-                                                                    <span>University of DVI (1997 - 2001)</span>
+                                                                    <h4>{{$education->title}}</h4>
+                                                                    <span>{{$education->name}} ({{$education->session_from}} - {{$education->session_to}})</span>
                                                                 </div>
                                                                 <div class="date-of-time">
-                                                                    <span>4.30/5</span>
+                                                                    <span>{{$education->score}}</span>
                                                                 </div>
                                                             </div>
-                                                            <p class="description">The education should be very
-                                                                interactual. Ut tincidunt est ac dolor aliquam sodales.
-                                                                Phasellus sed mauris hendrerit, laoreet sem in, lobortis
-                                                                mauris hendrerit ante.</p>
+                                                            <p class="description">{{$education->description}}</p>
                                                         </div>
                                                     </div>
                                                     <!-- End Single List  -->
-
-                                                    <!-- Start Single List  -->
-                                                    <div class="resume-single-list">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4> Examples Of Personal Portfolio</h4>
-                                                                    <span>College of Studies (2000 - 2002)</span>
-                                                                </div>
-                                                                <div class="date-of-time">
-                                                                    <span>4.50/5</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class="description">Maecenas finibus nec sem ut
-                                                                imperdiet. Ut tincidunt est ac dolor aliquam sodales.
-                                                                Phasellus sed mauris hendrerit, laoreet sem in, lobortis
-                                                                mauris hendrerit ante.</p>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single List  -->
-
-                                                    <!-- Start Single List  -->
-                                                    <div class="resume-single-list">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Tips For Personal Portfolio</h4>
-                                                                    <span>University of Studies (1997 - 2001)</span>
-                                                                </div>
-                                                                <div class="date-of-time">
-                                                                    <span>4.80/5</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class="description"> If you are going to use a passage.
-                                                                Ut tincidunt est ac dolor aliquam sodales.
-                                                                Phasellus sed mauris hendrerit, laoreet sem in, lobortis
-                                                                mauris hendrerit ante.</p>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single List  -->
-
+                                                    @endforeach
                                                 </div>
                                             </div>
                                         </div>
