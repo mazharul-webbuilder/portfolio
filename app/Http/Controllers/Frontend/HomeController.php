@@ -11,6 +11,7 @@ use App\Models\Feature;
 use App\Models\Meta;
 use App\Models\Portfolio;
 use App\Models\Pricing;
+use App\Models\ProffessionalSkill;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -46,6 +47,10 @@ class HomeController extends Controller
 
         $educations = Education::latest()->get();
 
+        $skills = ProffessionalSkill::orderBy('id', 'DESC')->take(5)->get();
+
+        $skills2 = ProffessionalSkill::orderBy('id', 'ASC')->take(5)->get();
+
        return \view('frontend.home.home',
            compact('adminDetails',
                'adminFacebook',
@@ -59,6 +64,8 @@ class HomeController extends Controller
                'premiumPricing',
                 'portfolios',
                 'educations',
+                'skills',
+                'skills2',
            ));
     }
 }
