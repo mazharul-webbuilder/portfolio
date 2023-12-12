@@ -2600,21 +2600,20 @@
                                 <img src="{{asset('frontend/assets')}}/images/contact/contact1.png" alt="contact-img">
                             </div>
                             <div class="title-area">
-                                <h4 class="title">Nevine Acotanza</h4>
-                                <span>Chief Operating Officer</span>
+                                <h4 class="title">{{$metaData->company_name}}</h4>
+                                <span>{{$metaData->designation}}</span>
                             </div>
                             <div class="description">
-                                <p>I am available for freelance work. Connect with me via and call in to my account.
-                                </p>
-                                <span class="phone">Phone: <a href="tel:01941043264">+01234567890</a></span>
-                                <span class="mail">Email: <a href="mailto:admin@example.com">admin@example.com</a></span>
+                                <p>{{$metaData->short_description}}</p>
+                                <span class="phone">Phone: <a href="tel:{{$metaData->phone}}">{{$metaData->phone}}</a></span>
+                                <span class="mail">Email: <a href="{{$metaData->email}}">{{$metaData->email}}</a></span>
                             </div>
                             <div class="social-area">
                                 <div class="name">FIND WITH ME</div>
                                 <div class="social-icone">
-                                    <a href="#"><i data-feather="facebook"></i></a>
-                                    <a href="#"><i data-feather="linkedin"></i></a>
-                                    <a href="#"><i data-feather="instagram"></i></a>
+                                    <a href="{{$adminFacebook->link}}"><i data-feather="facebook"></i></a>
+                                    <a href="{{$adminLinkedin->link}}"><i data-feather="linkedin"></i></a>
+                                    <a href="{{$adminInstagram->link}}"><i data-feather="instagram"></i></a>
                                 </div>
                             </div>
                         </div>
