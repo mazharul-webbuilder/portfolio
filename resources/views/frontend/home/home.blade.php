@@ -2623,26 +2623,26 @@
                         <div class="contact-form-wrapper">
                             <div class="introduce">
 
-                                <form class="rnt-contact-form rwt-dynamic-form row" id="contact-form" method="POST" action="mail.php">
-
+                                <form class="rnt-contact-form rwt-dynamic-form row" id="UserContactForm">
+                                    @csrf
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="contact-name">Your Name</label>
-                                            <input class="form-control form-control-lg" name="contact-name" id="contact-name" type="text">
+                                            <input class="form-control form-control-lg" name="name" id="contact-name" type="text">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="contact-phone">Phone Number</label>
-                                            <input class="form-control" name="contact-phone" id="contact-phone" type="text">
+                                            <input class="form-control" name="phone" id="contact-phone" type="text">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label for="contact-email">Email</label>
-                                            <input class="form-control form-control-sm" id="contact-email" name="contact-email" type="email">
+                                            <input class="form-control form-control-sm" id="contact-email" name="email" type="email">
                                         </div>
                                     </div>
 
@@ -2656,12 +2656,12 @@
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label for="contact-message">Your Message</label>
-                                            <textarea name="contact-message" id="contact-message" cols="30" rows="10"></textarea>
+                                            <textarea name="message" id="contact-message" cols="30" rows="10"></textarea>
                                         </div>
                                     </div>
 
                                     <div class="col-lg-12">
-                                        <button name="submit" type="submit" id="submit" class="rn-btn">
+                                        <button type="submit" class="rn-btn" id="contactSubmitBtn">
                                             <span>SEND MESSAGE</span>
                                             <i data-feather="arrow-right"></i>
                                         </button>
@@ -3507,6 +3507,58 @@
 @endsection
 
 @section('footer-asset')
+    <script>
+        $(document).ready(function () {
+            /*Request for Store User Query Data*/
+            $('#UserContactForm').on('submit', function (event) {
+                event.preventDefault();
+                const UserContactForm = $(this);
 
+                // Clear previous error messages
+                $('.error-message').remove();
+
+                // Serialize the form data
+                const formData = UserContactForm.serialize();
+
+                $.ajax({
+                    url: '{{ route('contact') }}',
+                    type: 'POST',
+                    data: formData,
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.response === 200) {
+                            if (data.type === "success") {
+                                Toast.fire({
+                                    icon: data.type,
+                                    title: data.message
+                                })
+                                formData.reset();
+                            } else {
+                                Toast.fire({
+                                    icon: data.type,
+                                    title: data.message
+                                })
+                            }
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        if (xhr.status === 422) {
+                            $('#contactSubmitBtn').removeAttr('disabled')
+                            const errors = xhr.responseJSON.errors;
+
+                            // Display error messages for each input field
+                            $.each(errors, function (field, errorMessage) {
+                                const inputField = $('[name="' + field + '"]');
+                                inputField.after('<span class="error-message text-danger">' + errorMessage[0] + '</span>');
+                            });
+                        } else {
+                            console.log('An error occurred:', status, error);
+                        }
+                    }
+                });
+            })
+
+        })
+    </script>
 @endsection
 

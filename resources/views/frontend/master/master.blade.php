@@ -144,6 +144,9 @@
 @yield('footer-asset')
 <!-- main JS -->
 <script src="{{asset('frontend/assets')}}/js/main.js"></script>
+
+@include('includes.toastr-notification.toastr')
+
 </body>
 
 </html>

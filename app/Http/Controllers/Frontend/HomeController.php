@@ -24,6 +24,7 @@ class HomeController extends Controller
         $adminLinkedin = AdminSocial::where('name', 'LinkedIn')->first();
         $features = Feature::latest()->get();
 
-       return \view('frontend.home.home', compact('adminDetails', 'adminFacebook', 'adminInstagram', 'adminLinkedin', 'features'));
+       return \view('frontend.home.home',
+           compact('adminDetails', 'adminFacebook', 'adminInstagram', 'adminLinkedin', 'features'));
     }
 }
