@@ -17,14 +17,17 @@ class PricingCategorySeeder extends Seeder
         DB::table('pricing_categories')->insert([
             [
                 'name' => 'Static',
+                'constant' => 'static',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],[
                 'name' => 'Standard',
+                'constant' => 'standard',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],[
                 'name' => 'Premium',
+                'constant' => 'premium',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]

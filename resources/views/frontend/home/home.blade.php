@@ -2191,34 +2191,32 @@
                         <div class="navigation-wrapper">
                             <ul class="nav " id="myTab" role="tablist">
                                 <li class="nav-item ">
-                                    <a class="nav-style" id="test-tab" data-bs-toggle="tab" href="#test" role="tab" aria-controls="test" aria-selected="false">Static</a>
+                                    <a class="nav-style" id="test-tab" data-bs-toggle="tab" href="#static" role="tab" aria-controls="test" aria-selected="false">{{$staticPricing->pricingCategory->name}}</a>
                                 </li>
 
                                 <li class="nav-item  recommended">
-                                    <a class="nav-style active" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Standard</a>
+                                    <a class="nav-style active" id="profile-tab" data-bs-toggle="tab" href="#standard" role="tab" aria-controls="profile" aria-selected="true">{{$standardPricing->pricingCategory->name}}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-style" id="contact-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Premium</a>
+                                    <a class="nav-style" id="contact-tab" data-bs-toggle="tab" href="#premium" role="tab" aria-controls="contact" aria-selected="false">{{$premiumPricing->pricingCategory->name}}</a>
                                 </li>
                             </ul>
                             <div class="tab-content" id="myTabContent">
 
-                                <div class="tab-pane fade " id="test" role="tabpanel" aria-labelledby="test-tab">
+                                <div class="tab-pane fade " id="static" role="tabpanel" aria-labelledby="test-tab">
                                     <!-- Pricing Start -->
                                     <div class="rn-pricing">
                                         <div class="pricing-header">
                                             <div class="header-left">
-                                                <h2 class="title">Make Your Single Page</h2>
-                                                <span>Elementor</span>
+                                                <h2 class="title">{{$staticPricing->title}}</h2>
                                             </div>
                                             <div class="header-right">
-                                                <span>$30.00</span>
+                                                <span>${{$staticPricing->total_price}}</span>
                                             </div>
                                         </div>
                                         <div class="pricing-body">
                                             <p class="description">
-                                                All the Lorem Ipsum generators on the Internet tend to repeat predefined
-                                                chunks as necessary
+                                                {{$staticPricing->short_description}}
                                             </p>
                                             <div class="check-wrapper">
                                                 <div class="left-area">
@@ -2295,22 +2293,19 @@
                                     <!-- End -->
                                 </div>
 
-                                <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="tab-pane fade show active" id="standard" role="tabpanel" aria-labelledby="profile-tab">
                                     <!-- Pricing Start -->
                                     <div class="rn-pricing">
                                         <div class="pricing-header">
                                             <div class="header-left">
-                                                <h2 class="title">Design Make this Page</h2>
-                                                <span>Elementor</span>
+                                                <h2 class="title">{{$standardPricing->title}}</h2>
                                             </div>
                                             <div class="header-right">
-                                                <span>$50.00</span>
+                                                <span>${{$standardPricing->total_price}}</span>
                                             </div>
                                         </div>
                                         <div class="pricing-body">
-                                            <p class="description">
-                                                Making this the first true generator on the Internet. It uses a
-                                                dictionary & plugin Development.
+                                            <p class="description">{{$staticPricing->short_description}}
                                             </p>
                                             <div class="check-wrapper">
                                                 <div class="left-area">
@@ -2387,22 +2382,20 @@
                                     <!-- End -->
                                 </div>
 
-                                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                <div class="tab-pane fade" id="premium" role="tabpanel" aria-labelledby="contact-tab">
                                     <!-- Pricing Start -->
                                     <div class="rn-pricing">
                                         <div class="pricing-header">
                                             <div class="header-left">
-                                                <h2 class="title">Customize Your Single Page</h2>
-                                                <span>Elementor</span>
+                                                <h2 class="title">{{$premiumPricing->title}}</h2>
                                             </div>
                                             <div class="header-right">
-                                                <span>$90.00</span>
+                                                <span>${{$premiumPricing->total_price}}</span>
                                             </div>
                                         </div>
                                         <div class="pricing-body">
                                             <p class="description">
-                                                I will install your desire theme and made like Theme demo and customize
-                                                your single page( homepage)
+                                                {{$staticPricing->short_description}}
                                             </p>
                                             <div class="check-wrapper">
                                                 <div class="left-area">

@@ -8,6 +8,7 @@ use App\Models\AdminSocial;
 use App\Models\Blog;
 use App\Models\Feature;
 use App\Models\Meta;
+use App\Models\Pricing;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -29,7 +30,27 @@ class HomeController extends Controller
 
         $blogs = Blog::with('blogCategory')->latest()->get();
 
+        $staticPricing = Pricing::whereHas('pricingCategory', function ($q){
+            return $q->where('constant', 'static');
+        })->first();
+        $standardPricing = Pricing::whereHas('pricingCategory', function ($q){
+            return $q->where('constant', 'standard');
+        })->first();
+        $premiumPricing = Pricing::whereHas('pricingCategory', function ($q){
+            return $q->where('constant', 'premium');
+        })->first();
+
        return \view('frontend.home.home',
-           compact('adminDetails', 'adminFacebook', 'adminInstagram', 'adminLinkedin', 'features', 'metaData', 'blogs'));
+           compact('adminDetails',
+               'adminFacebook',
+               'adminInstagram',
+               'adminLinkedin',
+               'features',
+               'metaData',
+               'blogs',
+               'staticPricing',
+               'standardPricing',
+               'premiumPricing',
+           ));
     }
 }
