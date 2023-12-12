@@ -8,6 +8,7 @@ use App\Models\AdminSocial;
 use App\Models\Blog;
 use App\Models\Feature;
 use App\Models\Meta;
+use App\Models\Portfolio;
 use App\Models\Pricing;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -40,6 +41,8 @@ class HomeController extends Controller
             return $q->where('constant', 'premium');
         })->first();
 
+        $portfolios = Portfolio::latest()->get();
+
        return \view('frontend.home.home',
            compact('adminDetails',
                'adminFacebook',
@@ -51,6 +54,7 @@ class HomeController extends Controller
                'staticPricing',
                'standardPricing',
                'premiumPricing',
+                'portfolios'
            ));
     }
 }
