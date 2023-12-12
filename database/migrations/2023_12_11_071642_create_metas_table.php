@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('metas', function (Blueprint $table) {
             $table->id();
+            $table->string('company_logo')->nullable();
+            $table->string('company_name');
+            $table->string('designation');
+            $table->string('short_description');
             $table->string('email')->nullable();
             $table->string('phone');
-            $table->string('company_logo')->nullable();
             $table->timestamps();
         });
     }
