@@ -26,6 +26,8 @@ class DatabaseSeeder extends Seeder
         $this->call(BlogSeeder::class);
         $this->call(PricingCategorySeeder::class);
         $this->call(PricingSeeder::class);
+        $this->call(PortfolioCategorySeeder::class);
+        $this->call(PortfolioSeeder::class);
         Model::reguard();
     }
 }
