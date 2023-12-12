@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\AdminDetail;
 use App\Models\AdminSocial;
+use App\Models\Blog;
 use App\Models\Feature;
 use App\Models\Meta;
 use Illuminate\Contracts\View\View;
@@ -26,7 +27,9 @@ class HomeController extends Controller
         $features = Feature::latest()->get();
         $metaData = Meta::first();
 
+        $blogs = Blog::with('blogCategory')->latest()->get();
+
        return \view('frontend.home.home',
-           compact('adminDetails', 'adminFacebook', 'adminInstagram', 'adminLinkedin', 'features', 'metaData'));
+           compact('adminDetails', 'adminFacebook', 'adminInstagram', 'adminLinkedin', 'features', 'metaData', 'blogs'));
     }
 }

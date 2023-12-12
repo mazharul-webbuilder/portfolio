@@ -9,8 +9,8 @@ class Blog extends Model
 {
     use HasFactory;
 
-    public function blogCategory(): \Illuminate\Database\Eloquent\Relations\HasOne
+    public function blogCategory(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->hasOne(BlogCategory::class);
+        return $this->belongsTo(BlogCategory::class);
     }
 }
