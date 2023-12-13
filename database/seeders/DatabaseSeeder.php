@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
         $this->call(EducationSeeder::class);
         $this->call(ExperienceSeeder::class);
         $this->call(ProffessionalSkillSeeder::class);
+        $this->call(TestimonialSeeder::class);
         Model::reguard();
     }
 }

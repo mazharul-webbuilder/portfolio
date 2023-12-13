@@ -17,8 +17,9 @@ return new class extends Migration
             $table->string('designation');
             $table->string('organization_name');
             $table->string('department_name');
+            $table->string('bio');
             $table->string('short_description');
-            $table->string('avatar');
+            $table->string('avatar')->nullable();
             $table->double('rating');
             $table->timestamps();
         });
