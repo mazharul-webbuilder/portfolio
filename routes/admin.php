@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\LogoutController;
 use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\MenuController;
 
 /**
  * Admin Routes
@@ -20,8 +21,10 @@ Route::middleware('guest')->prefix('admin/')->name('admin.')->group(function (){
 Route::middleware('admin')->prefix('admin/')->name('admin.')->group(function (){
     // Logout
     Route::post('logout', LogoutController::class)->name('logout');
-
+    // Admin Dashboard
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    // Menus
+    Route::get('menu/setting', [MenuController::class, 'index'])->name('menus');
 });
 
 

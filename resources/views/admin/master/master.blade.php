@@ -214,6 +214,12 @@
                             <span>Dashboards</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{route('admin.menus')}}" class="waves-effect">
+                            <i class="bx bx-menu"></i>
+                            <span>Menus</span>
+                        </a>
+                    </li>
 
                     <li class="menu-title">Apps</li>
                     <li>
