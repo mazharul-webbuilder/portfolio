@@ -34,6 +34,7 @@ Route::middleware('admin')->prefix('admin/')->name('admin.')->group(function (){
     // Setting
     Route::get('/general/setting', [GeneralSettingController::class, 'index'])->name('general.setting');
     Route::get('/meta/data/setting', [MetaDataSettingController::class, 'index'])->name('meta.data.setting');
+    Route::post('/meta/data/setting', [MetaDataSettingController::class, 'updateMetaSetting'])->name('meta.data.setting.update');
 });
 
 
