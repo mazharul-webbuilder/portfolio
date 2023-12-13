@@ -26,6 +26,7 @@ Route::middleware('admin')->prefix('admin/')->name('admin.')->group(function (){
     // Menus
     Route::get('menu/setting', [MenuController::class, 'index'])->name('menus');
     Route::get('menu/setting/datatable', [MenuController::class, 'datatable'])->name('menus.datatable');
+    Route::post('menu/setting/datatable', [MenuController::class, 'updateMenuStatus'])->name('menu.status.change');
 });
 
 

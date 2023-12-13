@@ -62,4 +62,32 @@
             });
         })
     </script>
+    {{--Acitve and Deactivate Menus--}}
+    <script>
+        $(document).ready(function (){
+            $('body').on('change', '.change-status', function (){
+                const menuId = $(this).data('id');
+                const csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+                $.ajax({
+                    url: '{{route('admin.menu.status.change')}}',
+                    method: 'POST',
+                    data: {
+                        menuId: menuId
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken
+                    },
+                    success: function (data) {
+                        if (data.response === 200) {
+                            Toast.fire({
+                                icon: data.type,
+                                title: data.message
+                            })
+                        }
+                    }
+                })
+            })
+        })
+    </script>
 @endsection
