@@ -61,8 +61,6 @@ class HomeController extends Controller
 
         $clients = Client::latest()->get();
 
-        $clientCategories = ClientCategory::all();
-
        return \view('frontend.home.home',
            compact('adminDetails',
                'adminFacebook',
@@ -80,7 +78,6 @@ class HomeController extends Controller
                 'testimonials',
                 'skills',
                 'skills2',
-                'clientCategories',
                 'clients',
            ));
     }
