@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\LogoutController;
 use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\MetaDataSettingController;
+use App\Http\Controllers\Admin\GeneralSettingController;
 
 /**
  * Admin Routes
@@ -29,6 +31,9 @@ Route::middleware('admin')->prefix('admin/')->name('admin.')->group(function (){
     Route::post('menu/setting/datatable', [MenuController::class, 'updateMenuStatus'])->name('menu.status.change');
     Route::get('menu/get', [MenuController::class, 'getMenu'])->name('menu.get');
     Route::post('menu/update', [MenuController::class, 'updateMenu'])->name('menu.update');
+    // Setting
+    Route::get('/general/setting', [GeneralSettingController::class, 'index'])->name('general.setting');
+    Route::get('/meta/data/setting', [MetaDataSettingController::class, 'index'])->name('meta.data.setting');
 });
 
 

@@ -244,8 +244,8 @@
                             <span>Setting</span>
                         </a>
                         <ul class="sub-menu" aria-expanded="false">
-                            <li><a href="#">General Settings</a></li>
-                            <li><a href="#">Maintenance</a></li>
+                            <li><a href="{{route('admin.general.setting')}}">General Settings</a></li>
+                            <li><a href="{{route('admin.meta.data.setting')}}">Meta Data Settings</a></li>
                         </ul>
                     </li>
 
