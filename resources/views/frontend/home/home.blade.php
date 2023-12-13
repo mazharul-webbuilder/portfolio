@@ -233,67 +233,21 @@
                                                 <span class="subtitle">2007 - 2010</span>
                                                 <h4 class="maintitle">Job Experience</h4>
                                                 <div class="experience-list">
-
+                                                    @foreach($experiences as $experience)
                                                     <!-- Start Single List  -->
                                                     <div class="resume-single-list">
                                                         <div class="inner">
                                                             <div class="heading">
                                                                 <div class="title">
-                                                                    <h4>Diploma in Web Development</h4>
-                                                                    <span>BSE In CSE (2004 - 2008)</span>
-                                                                </div>
-                                                                <div class="date-of-time">
-                                                                    <span>4.70/5</span>
+                                                                    <h4>{{$experience->company_name}}</h4>
+                                                                    <span>{{$experience->designation}} ({{$experience->starting_year}} - {{$experience->ending_year}})</span>
                                                                 </div>
                                                             </div>
-                                                            <p class="description">Contrary to popular belief. Ut
-                                                                tincidunt est ac dolor aliquam sodales.
-                                                                Phasellus sed mauris hendrerit, laoreet sem in, lobortis
-                                                                mauris hendrerit ante.</p>
+                                                            <p class="description">{{$experience->description}}</p>
                                                         </div>
                                                     </div>
                                                     <!-- End Single List  -->
-
-                                                    <!-- Start Single List  -->
-                                                    <div class="resume-single-list">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>The Personal Portfolio Mystery</h4>
-                                                                    <span>Job at Rainbow-Themes (2008 - 2016)</span>
-                                                                </div>
-                                                                <div class="date-of-time">
-                                                                    <span>4.95/5</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class="description">Generate Lorem Ipsum which looks. Ut
-                                                                tincidunt est ac dolor aliquam sodales.
-                                                                Phasellus sed mauris hendrerit, laoreet sem in, lobortis
-                                                                mauris hendrerit ante.</p>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single List  -->
-
-                                                    <!-- Start Single List  -->
-                                                    <div class="resume-single-list">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Diploma in Computer Science</h4>
-                                                                    <span>Works at Plugin Development (2016 -
-                                                                2020)</span>
-                                                                </div>
-                                                                <div class="date-of-time">
-                                                                    <span>5.00/5</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class="description">Maecenas finibus nec sem ut
-                                                                imperdiet. Ut tincidunt est ac dolor aliquam sodales.
-                                                                Phasellus sed mauris hendrerit, laoreet sem in, lobortis
-                                                                mauris hendrerit ante.</p>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single List  -->
+                                                    @endforeach
 
                                                 </div>
                                             </div>

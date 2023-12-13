@@ -7,6 +7,7 @@ use App\Models\AdminDetail;
 use App\Models\AdminSocial;
 use App\Models\Blog;
 use App\Models\Education;
+use App\Models\Experience;
 use App\Models\Feature;
 use App\Models\Meta;
 use App\Models\Portfolio;
@@ -47,6 +48,8 @@ class HomeController extends Controller
 
         $educations = Education::latest()->get();
 
+        $experiences = Experience::latest()->get();
+
         $skills = ProffessionalSkill::orderBy('id', 'DESC')->take(5)->get();
 
         $skills2 = ProffessionalSkill::orderBy('id', 'ASC')->take(5)->get();
@@ -64,6 +67,7 @@ class HomeController extends Controller
                'premiumPricing',
                 'portfolios',
                 'educations',
+                'experiences',
                 'skills',
                 'skills2',
            ));

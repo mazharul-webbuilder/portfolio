@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('company_name');
             $table->string('designation');
-            $table->date('starting_year');
-            $table->date('ending_year');
+            $table->string('starting_year');
+            $table->string('ending_year');
             $table->boolean('is_current');
             $table->timestamps();
         });
