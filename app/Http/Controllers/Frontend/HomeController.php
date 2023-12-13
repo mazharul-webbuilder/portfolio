@@ -13,6 +13,7 @@ use App\Models\Meta;
 use App\Models\Portfolio;
 use App\Models\Pricing;
 use App\Models\ProffessionalSkill;
+use App\Models\Testimonial;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -50,6 +51,8 @@ class HomeController extends Controller
 
         $experiences = Experience::latest()->get();
 
+        $testimonials = Testimonial::latest()->get();
+
         $skills = ProffessionalSkill::orderBy('id', 'DESC')->take(5)->get();
 
         $skills2 = ProffessionalSkill::orderBy('id', 'ASC')->take(5)->get();
@@ -68,6 +71,7 @@ class HomeController extends Controller
                 'portfolios',
                 'educations',
                 'experiences',
+                'testimonials',
                 'skills',
                 'skills2',
            ));
