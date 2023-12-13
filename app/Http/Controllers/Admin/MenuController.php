@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
@@ -42,16 +43,27 @@ class MenuController extends Controller
 
             })
             ->addColumn('action', function ($menu){
-                return '<button class="btn btn-primary" data-id="' . $menu->id . '">Edit</button>';
+                return '<button type="button"
+                 data-toggle="modal"
+                 class="menuEditBtn btn btn-primary waves-effect waves-light btn btn-primary"
+                 data-id="' . $menu->id . '">Edit</button>';
             })
             ->rawColumns(['status', 'action'])
             ->make(true);
     }
 
     /**
+     * Get Menu
+    */
+    public function getMenu(Request $request): JsonResponse
+    {
+        return \response()->json(Menu::find($request->menuId));
+    }
+
+    /**
      * Update Menus Status
     */
-    public function updateMenuStatus(Request $request)
+    public function updateMenuStatus(Request $request): JsonResponse
     {
         try {
             DB::beginTransaction();

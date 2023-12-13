@@ -30,6 +30,30 @@
             </div>
         </div>
     </div>
+    {{--modal--}}
+        <div class="my-4 text-center">
+        <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title mt-0">Edit Menu</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="menuEditForm">
+                            @csrf
+                            <input type="text" class="form-control" name="name" id="menuNameId">
+                            <br>
+                            <input type="submit" class="btn btn-sm btn-primary">
+                        </form>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    </div>
+    {{--End modal--}}
 @endsection
 
 @section('page-footer-assets')
@@ -85,6 +109,30 @@
                                 title: data.message
                             })
                         }
+                    }
+                })
+            })
+        })
+    </script>
+    {{--Edit Menu--}}
+    <script>
+        $(document).ready(function (){
+            $('body').on('click', '.menuEditBtn', function () {
+                const menuId = $(this).data('id');
+                const csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+                $.ajax({
+                    url: '{{route('admin.menu.get')}}',
+                    method: 'GET',
+                    data: {
+                        menuId: menuId
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken
+                    },
+                    success: function (data) {
+                        $('#menuNameId').val(data.name)
+                        $('.bs-example-modal-center').modal('show')
                     }
                 })
             })
