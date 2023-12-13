@@ -25,6 +25,7 @@ Route::middleware('admin')->prefix('admin/')->name('admin.')->group(function (){
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     // Menus
     Route::get('menu/setting', [MenuController::class, 'index'])->name('menus');
+    Route::get('menu/setting/datatable', [MenuController::class, 'datatable'])->name('menus.datatable');
 });
 
 

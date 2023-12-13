@@ -16,6 +16,8 @@
     <link href="{{ asset("assets/css/icons.min.css") }}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="{{ asset("assets/css/app.min.css") }}" id="app-style" rel="stylesheet" type="text/css" />
+    {{--Datatable--}}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     {{--Page indipendend assets--}}
     @yield('page-header-assets')
 </head>
@@ -288,6 +290,8 @@
 <script src="{{ asset("assets") }}/libs/metismenu/metisMenu.min.js"></script>
 <script src="{{ asset("assets") }}/libs/simplebar/simplebar.min.js"></script>
 <script src="{{ asset("assets") }}/libs/node-waves/waves.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
 
 <!-- App js -->
 <script src="{{ asset("assets") }}/js/app.js"></script>
