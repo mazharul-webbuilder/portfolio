@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\MenuUpdateRequest;
 use App\Models\Menu;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -58,6 +60,30 @@ class MenuController extends Controller
     public function getMenu(Request $request): JsonResponse
     {
         return \response()->json(Menu::find($request->menuId));
+    }
+
+    /*Update Menu*/
+    public function updateMenu(MenuUpdateRequest $request): JsonResponse
+    {
+        try {
+            DB::beginTransaction();
+            $menu = Menu::find($request->id);
+            $menu->name = ucfirst($request->name);
+            $menu->save();
+            DB::commit();
+            return \response()->json([
+                'response' => Response::HTTP_OK,
+                'type' => 'success',
+                'message' => 'Menu Updated Successfully'
+            ]);
+        } catch (QueryException $e) {
+            DB::rollBack();
+            return \response()->json([
+                'response' => Response::HTTP_INTERNAL_SERVER_ERROR,
+                'type' => 'error',
+                'message' => $e->getMessage()
+            ]);
+        }
     }
 
     /**

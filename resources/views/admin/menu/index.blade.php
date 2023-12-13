@@ -44,9 +44,10 @@
                     <div class="modal-body">
                         <form id="menuEditForm">
                             @csrf
+                            <input type="hidden" name="id" id="menuId">
                             <input type="text" class="form-control" name="name" id="menuNameId">
                             <br>
-                            <input type="submit" class="btn btn-sm btn-primary">
+                            <input type="submit" class="submit-btn btn btn-sm btn-primary">
                         </form>
                     </div>
                 </div><!-- /.modal-content -->
@@ -132,9 +133,64 @@
                     },
                     success: function (data) {
                         $('#menuNameId').val(data.name)
+                        $('#menuId').val(data.id)
                         $('.bs-example-modal-center').modal('show')
                     }
                 })
+            })
+        })
+    </script>
+    {{--Update Menu--}}
+    <script>
+        $(document).ready(function () {
+            $('#menuEditForm').on('submit', function (e) {
+                e.preventDefault()
+                $('.error-message').hide()
+
+                $('.submit-btn').html('Processing....').prop('disabled', true)
+
+                const formData = new FormData(this);
+
+                $.ajax({
+                    url: '{{route('admin.menu.update')}}',
+                    method: 'POST',
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        if (data.response === 200) {
+                            Toast.fire({
+                                icon: data.type,
+                                title: data.message
+                            })
+                            $('.close').click()
+                            $('#dataTable').DataTable().ajax.reload();
+                            $('.submit-btn').html('Processing....').prop('disabled', false)
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.log('error')
+                        if (xhr.status === 422) {
+                            $('.submit-btn').text('Submit').prop('disabled', false)
+                            const errors = xhr.responseJSON.errors;
+
+                            // Clear previous error messages
+                            $('.error-message').remove();
+
+                            // Display error messages for each input field
+                            Object.keys(errors).forEach(function (field) {
+                                const errorMessage = errors[field][0];
+                                const inputField = $('[name="' + field + '"]');
+                                inputField.after('<span class="error-message text-danger">' + errorMessage + '</span>');
+                            });
+
+                        } else {
+                            console.log('An error occurred:', status, error);
+                        }
+                    }
+                })
+
             })
         })
     </script>
