@@ -51,10 +51,12 @@
                         name: 'name'
                     }, {
                         data: 'status',
-                        name: 'status'
+                        name: 'status',
+                        orderable: false
                     },{
                         data: 'action',
-                        name: 'action'
+                        name: 'action',
+                        orderable: false
                     },
                 ]
             });
