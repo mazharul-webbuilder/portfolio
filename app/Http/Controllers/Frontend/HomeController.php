@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\AdminDetail;
 use App\Models\AdminSocial;
 use App\Models\Blog;
+use App\Models\Client;
+use App\Models\ClientCategory;
 use App\Models\Education;
 use App\Models\Experience;
 use App\Models\Feature;
@@ -57,6 +59,10 @@ class HomeController extends Controller
 
         $skills2 = ProffessionalSkill::orderBy('id', 'ASC')->take(5)->get();
 
+        $clients = Client::latest()->get();
+
+        $clientCategories = ClientCategory::all();
+
        return \view('frontend.home.home',
            compact('adminDetails',
                'adminFacebook',
@@ -74,6 +80,8 @@ class HomeController extends Controller
                 'testimonials',
                 'skills',
                 'skills2',
+                'clientCategories',
+                'clients',
            ));
     }
 }

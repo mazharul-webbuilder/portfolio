@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('client_category_id')->constrained('client_categories')->cascadeOnDelete();
             $table->string('name');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
