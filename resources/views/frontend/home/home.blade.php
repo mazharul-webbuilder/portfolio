@@ -621,7 +621,7 @@
                             <div class="main-content">
                                 <div class="inner text-center">
                                     <div class="thumbnail">
-                                        <a href="#"><img src="{{asset('frontend/assets')}}/images/client/png/client1.png" alt="Client-image"></a>
+                                        <a href="#"><img src="{{asset('uploads/client/resize' . '/' . $client->image)}}" alt="Client-image"></a>
                                     </div>
                                     <div class="seperator"></div>
                                     <div class="client-name"><span><a href="#">{{$client->name}}</a></span>
