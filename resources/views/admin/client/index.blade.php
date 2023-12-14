@@ -45,14 +45,16 @@
                     <div class="modal-body">
                         <form id="featureEditForm">
                             @csrf
-                            <input type="hidden" name="id" id="featureIdId">
-                            <input type="text" class="form-control" name="title" id="featureTitle">
+                            <input type="hidden" name="id" id="clientId">
+                            <input type="text" class="form-control" name="name" id="ClientName">
                             <br>
-                            <textarea name="description" id="featureDescription" cols="30" rows="10" class="form-control">
-
-                            </textarea>
+                            <input type="file" class="form-control" name="image" id="">
                             <br>
-                            <input type="submit" class="submit-btn btn btn-sm btn-primary">
+                            <img src="" alt="" id="clientImage" height="70" width="70">
+                            <br>
+                            <div class="mt-2">
+                                <input type="submit" value="update" class="btn btn-sm btn-primary">
+                            </div>
                         </form>
                     </div>
                 </div><!-- /.modal-content -->
@@ -90,32 +92,33 @@
             });
         })
     </script>
+    {{--Edit--}}
     <script>
         $(document).ready(function (){
-            $('body').on('click', '.menuEditBtn', function () {
-                const featureId = $(this).data('id');
+            $('body').on('click', '.ClientEditBtn', function () {
+                const id = $(this).data('id');
                 const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
                 $.ajax({
-                    url: '{{route('admin.feature.get')}}',
+                    url: '{{route('admin.client.get')}}',
                     method: 'GET',
                     data: {
-                        featureId: featureId
+                        id: id
                     },
                     headers: {
                         'X-CSRF-TOKEN': csrfToken
                     },
                     success: function (data) {
-                        $('#featureTitle').val(data.title)
-                        $('#featureDescription').val(data.description)
-                        $('#featureIdId').val(data.id)
+                        $('#clientId').val(data.id)
+                        $('#ClientName').val(data.name)
+                        $('#clientImage').attr('src', '{{asset('uploads/client/resize')}}' + '/' + data.image)
                         $('.bs-example-modal-center').modal('show')
                     }
                 })
             })
         })
     </script>
-    {{--Update Menu--}}
+    {{--Update Client--}}
     <script>
         $(document).ready(function () {
             $('#featureEditForm').on('submit', function (e) {

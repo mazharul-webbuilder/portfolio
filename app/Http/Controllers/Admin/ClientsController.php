@@ -55,6 +55,16 @@ class ClientsController extends Controller
     }
 
     /**
+     * Get Client
+    */
+    public function getClient(Request $request): JsonResponse
+    {
+        return \response()->json(Client::find($request->id));
+    }
+
+
+
+    /**
      * Delete Clients
     */
     public function delete(Request $request): JsonResponse
