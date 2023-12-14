@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\MetaDataSettingController;
+use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\GeneralSettingController;
 
 /**
@@ -31,6 +32,9 @@ Route::middleware('admin')->prefix('admin/')->name('admin.')->group(function (){
     Route::post('menu/setting/datatable', [MenuController::class, 'updateMenuStatus'])->name('menu.status.change');
     Route::get('menu/get', [MenuController::class, 'getMenu'])->name('menu.get');
     Route::post('menu/update', [MenuController::class, 'updateMenu'])->name('menu.update');
+    // Features
+    Route::get('/features', [FeatureController::class, 'index'])->name('features');
+    Route::get('/features/datatable', [FeatureController::class, 'datatable'])->name('features.datatable');
     // Setting
     Route::get('/general/setting', [GeneralSettingController::class, 'index'])->name('general.setting');
     Route::post('/general/setting', [GeneralSettingController::class, 'updateGeneralSetting'])->name('general.setting.update');

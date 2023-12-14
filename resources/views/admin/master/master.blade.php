@@ -223,6 +223,12 @@
                             <span>Menus</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{route('admin.features')}}" class="waves-effect">
+                            <i class="bx bx-album"></i>
+                            <span>Features</span>
+                        </a>
+                    </li>
 
                     <li class="menu-title">Apps</li>
                     <li>
