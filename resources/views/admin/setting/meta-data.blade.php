@@ -45,7 +45,7 @@
                             <div class="form-group row mb-4">
                                 <label for="horizontal-password-input" class="col-sm-3 col-form-label">Company Logo (460x288)</label>
                                 <div class="col-sm-9">
-                                    <input type="file" class="form-control" id="horizontal-password-input" name="company_logo">
+                                    <input type="file" class="form-control" id="horizontal-password-input" name="image">
                                 </div>
                             </div>
                             <div class="form-group row mb-4">

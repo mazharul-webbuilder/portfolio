@@ -27,7 +27,7 @@ class MetaSettingUpdateRequest extends FormRequest
             'email' => 'required|email',
             'phone' => 'required|regex:/^\+\d{1,15}$/',
             'short_description' => 'required|string|min:30',
-            'company_logo' => ['nullable',
+            'image' => ['nullable',
                                 'image',
                                 'mimes:jpg,png,jpeg',
                                 'dimensions:min_width=460,min_height=288'],
