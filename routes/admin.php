@@ -35,6 +35,8 @@ Route::middleware('admin')->prefix('admin/')->name('admin.')->group(function (){
     // Features
     Route::get('/features', [FeatureController::class, 'index'])->name('features');
     Route::get('/features/datatable', [FeatureController::class, 'datatable'])->name('features.datatable');
+    Route::get('/features/get', [FeatureController::class, 'getFeature'])->name('feature.get');
+    Route::post('/features/update', [FeatureController::class, 'updateFeature'])->name('feature.update');
     // Setting
     Route::get('/general/setting', [GeneralSettingController::class, 'index'])->name('general.setting');
     Route::post('/general/setting', [GeneralSettingController::class, 'updateGeneralSetting'])->name('general.setting.update');

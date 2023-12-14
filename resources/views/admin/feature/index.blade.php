@@ -42,10 +42,14 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form id="menuEditForm">
+                        <form id="featureEditForm">
                             @csrf
-                            <input type="hidden" name="id" id="menuId">
-                            <input type="text" class="form-control" name="name" id="menuNameId">
+                            <input type="hidden" name="id" id="featureIdId">
+                            <input type="text" class="form-control" name="title" id="featureTitle">
+                            <br>
+                            <textarea name="description" id="featureDescription" cols="30" rows="10" class="form-control">
+
+                            </textarea>
                             <br>
                             <input type="submit" class="submit-btn btn btn-sm btn-primary">
                         </form>
@@ -86,53 +90,25 @@
             });
         })
     </script>
-    {{--Acitve and Deactivate Menus--}}
-    <script>
-        $(document).ready(function (){
-            $('body').on('change', '.change-status', function (){
-                const menuId = $(this).data('id');
-                const csrfToken = $('meta[name="csrf-token"]').attr('content');
-
-                $.ajax({
-                    url: '{{route('admin.menu.status.change')}}',
-                    method: 'POST',
-                    data: {
-                        menuId: menuId
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': csrfToken
-                    },
-                    success: function (data) {
-                        if (data.response === 200) {
-                            Toast.fire({
-                                icon: data.type,
-                                title: data.message
-                            })
-                        }
-                    }
-                })
-            })
-        })
-    </script>
-    {{--Edit Menu--}}
     <script>
         $(document).ready(function (){
             $('body').on('click', '.menuEditBtn', function () {
-                const menuId = $(this).data('id');
+                const featureId = $(this).data('id');
                 const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
                 $.ajax({
-                    url: '{{route('admin.menu.get')}}',
+                    url: '{{route('admin.feature.get')}}',
                     method: 'GET',
                     data: {
-                        menuId: menuId
+                        featureId: featureId
                     },
                     headers: {
                         'X-CSRF-TOKEN': csrfToken
                     },
                     success: function (data) {
-                        $('#menuNameId').val(data.name)
-                        $('#menuId').val(data.id)
+                        $('#featureTitle').val(data.title)
+                        $('#featureDescription').val(data.description)
+                        $('#featureIdId').val(data.id)
                         $('.bs-example-modal-center').modal('show')
                     }
                 })
@@ -142,7 +118,7 @@
     {{--Update Menu--}}
     <script>
         $(document).ready(function () {
-            $('#menuEditForm').on('submit', function (e) {
+            $('#featureEditForm').on('submit', function (e) {
                 e.preventDefault()
                 $('.error-message').hide()
 
@@ -151,7 +127,7 @@
                 const formData = new FormData(this);
 
                 $.ajax({
-                    url: '{{route('admin.menu.update')}}',
+                    url: '{{route('admin.feature.update')}}',
                     method: 'POST',
                     data: formData,
                     cache: false,
