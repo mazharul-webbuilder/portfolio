@@ -7,6 +7,8 @@ use App\Models\Client;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 
 class ClientsController extends Controller
@@ -50,5 +52,30 @@ class ClientsController extends Controller
             })
             ->rawColumns(['action', 'image'])
             ->make(true);
+    }
+
+    /**
+     * Delete Clients
+    */
+    public function delete(Request $request): JsonResponse
+    {
+        try {
+            DB::beginTransaction();
+            $client = Client::find($request->id);
+            $client->delete();
+            DB::commit();
+            return  \response()->json([
+                'response' => Response::HTTP_OK,
+                'type' => 'success',
+                'message' => 'Client Deleted Successfully'
+            ]);
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            return response()->json([
+                'response' => Response::HTTP_OK,
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
     }
 }

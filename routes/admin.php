@@ -41,6 +41,7 @@ Route::middleware('admin')->prefix('admin/')->name('admin.')->group(function (){
     // Clients
     Route::get('/clients', [ClientsController::class, 'index'])->name('clients');
     Route::get('/clients/datatable', [ClientsController::class, 'datatable'])->name('clients.datatable');
+    Route::post('/clients/delete', [ClientsController::class, 'delete'])->name('client.delete');
     // Setting
     Route::get('/general/setting', [GeneralSettingController::class, 'index'])->name('general.setting');
     Route::post('/general/setting', [GeneralSettingController::class, 'updateGeneralSetting'])->name('general.setting.update');
