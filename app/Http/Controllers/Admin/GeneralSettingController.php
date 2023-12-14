@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\AdminDetail;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -18,6 +19,8 @@ class GeneralSettingController extends Controller
     */
     public function index(): View
     {
-        return \view('admin.setting.general-setting');
+        $adminDetails = AdminDetail::first();
+
+        return \view('admin.setting.general-setting', compact('adminDetails'));
     }
 }
