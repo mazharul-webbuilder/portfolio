@@ -72,7 +72,7 @@
                         <div class="order-1 order-lg-2 col-lg-5">
                             <div class="thumbnail">
                                 <div class="inner">
-                                    <img src="{{asset('frontend/assets')}}/images/slider/banner-01.png" alt="Personal Portfolio Images">
+                                    <img src="{{asset('uploads/banner/resize'. '/' . $metaData->site_banner)}}" alt="Personal Portfolio Images">
                                 </div>
                             </div>
                         </div>
