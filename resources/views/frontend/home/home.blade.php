@@ -1001,7 +1001,7 @@
                     <div class="col-lg-5">
                         <div class="contact-about-area">
                             <div class="thumbnail">
-                                <img src="{{asset('frontend/assets')}}/images/contact/contact1.png" alt="contact-img">
+                                <img src="{{asset('uploads/company/resize'. '/' . $metaData->company_logo)}}" alt="contact-img">
                             </div>
                             <div class="title-area">
                                 <h4 class="title">{{$metaData->company_name}}</h4>
