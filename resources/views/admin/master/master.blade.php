@@ -189,8 +189,8 @@
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
                         <!-- item-->
-                        <a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle mr-1"></i> Profile</a>
-                        <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-right"></span><i class="bx bx-wrench font-size-16 align-middle mr-1"></i> Settings</a>
+                        <a class="dropdown-item" href="{{route('admin.general.setting')}}"><i class="bx bx-user font-size-16 align-middle mr-1"></i> Profile</a>
+                        <a class="dropdown-item d-block" href="{{route('admin.meta.data.setting')}}"><span class="badge badge-success float-right"></span><i class="bx bx-wrench font-size-16 align-middle mr-1"></i> Settings</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item text-danger" href="#" onclick="event.preventDefault(); document.getElementById('adminlogout{{\Illuminate\Support\Facades\Auth::guard('admin')->user()->id}}').submit();">
                             <i class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Logout</a>
