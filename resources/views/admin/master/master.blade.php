@@ -223,12 +223,22 @@
                             <span>Menus</span>
                         </a>
                     </li>
+                    @if(!is_null(\App\Models\Menu::where(['constant_name' => 'features', 'status' => 1])->first()))
                     <li>
                         <a href="{{route('admin.features')}}" class="waves-effect">
-                            <i class="bx bx-album"></i>
+                            <i class="bx bx-area"></i>
                             <span>Features</span>
                         </a>
                     </li>
+                    @endif
+                    @if(!is_null(\App\Models\Menu::where(['constant_name' => 'clients', 'status' => 1])->first()))
+                    <li>
+                        <a href="{{route('admin.clients')}}" class="waves-effect">
+                            <i class="bx bx-user"></i>
+                            <span>Clients</span>
+                        </a>
+                    </li>
+                    @endif
 
                     <li class="menu-title">Apps</li>
                     <li>

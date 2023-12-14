@@ -605,6 +605,7 @@
             </div>
         </div>
         <!-- End Testimonial Area  -->
+        @if(!is_null(\App\Models\Menu::where(['constant_name' => 'clients', 'status' => 1])->first()))
         <!-- Start Client Area -->
         <div class="rn-client-area rn-section-gap section-separator" id="clients">
             <div class="container">
@@ -636,6 +637,7 @@
             </div>
         </div>
         <!-- End client section -->
+        @endif
         <!-- Pricing Area -->
         <div class="rn-pricing-area rn-section-gap section-separator" id="pricing">
             <div class="container">
