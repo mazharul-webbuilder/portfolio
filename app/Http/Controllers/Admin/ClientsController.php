@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ClientUpdateReqeust;
 use App\Models\Client;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
@@ -60,6 +61,39 @@ class ClientsController extends Controller
     public function getClient(Request $request): JsonResponse
     {
         return \response()->json(Client::find($request->id));
+    }
+
+    /**
+     * Update Client Data
+    */
+    public function update(ClientUpdateReqeust $reqeust): JsonResponse
+    {
+        try {
+            DB::beginTransaction();
+            $client = Client::find($reqeust->id);
+            $client->name = $reqeust->name;
+            if ($reqeust->hasFile('image')) {
+                if (!is_null($client->image)) {
+                    delete_2_type_image_if_exist_latest(imageName: $client->image, folderName: 'client');
+                }
+                $client->image = store_2_type_image_nd_get_image_name(request: $reqeust, folderName: 'client');
+            }
+            $client->save();
+            DB::commit();
+            return \response()->json([
+                'response' => Response::HTTP_OK,
+                'type' => 'success',
+                'message' => 'Client Info Updated Successfully'
+            ]);
+
+        }catch (\Exception $exception){
+            DB::rollBack();
+            return \response()->json([
+                'response' => Response::HTTP_INTERNAL_SERVER_ERROR,
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
     }
 
 

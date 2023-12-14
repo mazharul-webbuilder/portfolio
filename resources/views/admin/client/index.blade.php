@@ -37,13 +37,13 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title mt-0">Edit Menu</h5>
+                        <h5 class="modal-title mt-0">Edit Client</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form id="featureEditForm">
+                        <form id="clientUpdateForm">
                             @csrf
                             <input type="hidden" name="id" id="clientId">
                             <input type="text" class="form-control" name="name" id="ClientName">
@@ -121,7 +121,7 @@
     {{--Update Client--}}
     <script>
         $(document).ready(function () {
-            $('#featureEditForm').on('submit', function (e) {
+            $('#clientUpdateForm').on('submit', function (e) {
                 e.preventDefault()
                 $('.error-message').hide()
 
@@ -130,7 +130,7 @@
                 const formData = new FormData(this);
 
                 $.ajax({
-                    url: '{{route('admin.feature.update')}}',
+                    url: '{{route('admin.client.update')}}',
                     method: 'POST',
                     data: formData,
                     cache: false,
