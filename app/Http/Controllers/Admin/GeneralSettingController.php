@@ -43,7 +43,7 @@ class GeneralSettingController extends Controller
                 if (!is_null($adminDetail->avatar)) {
                     delete_2_type_image_if_exist_latest(imageName: $adminDetail->avatar, folderName: 'admin-avatar');
                 }
-                $adminDetail->avatar = store_2_type_image_nd_get_image_name(request: $request, folderName:  'admin-avatar', resize_width: 256, resize_height: 200);
+                $adminDetail->avatar = store_2_type_image_nd_get_image_name(request: $request, folderName:  'admin-avatar', resize_width: 200, resize_height: 200);
             }
             $adminDetail->save();
 
