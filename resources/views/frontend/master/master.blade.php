@@ -32,7 +32,7 @@
             <div class="header-left">
                 <div class="logo">
                     <a href="{{route('home')}}">
-                        <img src="{{asset('frontend/assets')}}/images/logo/logo.png" alt="logo">
+                        <img src="{{asset('uploads/admin-avatar/resize' . '/' . \App\Models\AdminDetail::first()->avatar)}}" alt="logo" height="80" width="80">
                     </a>
                 </div>
             </div>
