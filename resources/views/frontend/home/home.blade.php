@@ -82,6 +82,7 @@
         </div>
         <!-- End Slider Area -->
 
+        @if(!is_null(\App\Models\Menu::where(['constant_name' => 'features', 'status' => 1])->first()))
         <!-- Start Service Area -->
         <div class="rn-service-area rn-section-gap section-separator" id="features">
             <div class="container">
@@ -103,12 +104,12 @@
                                     <i data-feather="slack"></i>
                                 </div>
                                 <div class="content">
-                                    <h4 class="title"><a href="#">{{$feature->title}}</a></h4>
+                                    <h4 class="title"><a href="javascript:void(0)">{{$feature->title}}</a></h4>
                                     <p class="description">{{$feature->description}}</p>
-                                    <a class="read-more-button" href="#"><i class="feather-arrow-right"></i></a>
+                                    <a class="read-more-button" href="javascript:void(0)"><i class="feather-arrow-right"></i></a>
                                 </div>
                             </div>
-                            <a class="over-link" href="#"></a>
+                            <a class="over-link" href="javascript:void(0)"></a>
                         </div>
                     </div>
                     <!-- End SIngle Service -->
@@ -117,6 +118,7 @@
             </div>
         </div>
         <!-- End Service Area  -->
+        @endif
 
         <!-- Start Portfolio Area -->
         <div class="rn-portfolio-area rn-section-gap section-separator" id="portfolio">
