@@ -36,10 +36,17 @@ class ClientsController extends Controller
                 return '<img src="' . asset('uploads/client/resize' . '/' . $menu->image) . '" alt="client image" height="50" width="50">';
             })
             ->addColumn('action', function ($menu){
-                return '<button type="button"
-                 data-toggle="modal"
-                 class="menuDeleteBtn btn btn-danger waves-effect waves-light btn btn-primary"
-                 data-id="' . $menu->id . '">Delete</button>';
+                return '<div>
+                            <button type="button"
+                            data-toggle="modal"
+                            class="ClientEditBtn btn btn-primary waves-effect waves-light btn btn-primary"
+                            data-id="' . $menu->id . '">Edit</button>
+                             <button type="button"
+                            data-toggle="modal"
+                            class="ClientDeleteBtn btn btn-danger waves-effect waves-light btn btn-primary"
+                            data-id="' . $menu->id . '">Delete</button>
+                        </div>
+                        ';
             })
             ->rawColumns(['action', 'image'])
             ->make(true);
