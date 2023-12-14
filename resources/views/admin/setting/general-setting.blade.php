@@ -16,7 +16,7 @@
                         <div class="card-header bg-primary text-white mb-5">
                             <h2 class="mb-0 text-light">Admin General Settings</h2>
                         </div>
-                        <form id="meteSettingForm" enctype="multipart/form-data">
+                        <form id="generalSettingForm" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group row mb-4">
                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Showing Name in Banner side</label>
@@ -39,7 +39,7 @@
                             <div class="form-group row mb-4">
                                 <label for="horizontal-email-input" class="col-sm-3 col-form-label">Slogan 3</label>
                                 <div class="col-sm-9">
-                                    <input type="text" value="{{$adminDetails->slogan_3}}" class="form-control" id="horizontal-email-input" name="slogan_2" placeholder="Enter third slogan for banner side">
+                                    <input type="text" value="{{$adminDetails->slogan_3}}" class="form-control" id="horizontal-email-input" name="slogan_3" placeholder="Enter third slogan for banner side">
                                 </div>
                             </div>
                             <div class="form-group row mb-4">
@@ -71,6 +71,54 @@
 
 @section('page-footer-assets')
     <script>
+        $(document).ready(function () {
+            $('#generalSettingForm').on('submit', function (e) {
+                e.preventDefault()
+                $('.error-message').hide()
 
+                $('.submit-btn').html('Processing....').prop('disabled', true)
+
+                const formData = new FormData(this);
+
+                $.ajax({
+                    url: '{{route('admin.general.setting.update')}}',
+                    method: 'POST',
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        if (data.response === 200) {
+
+                            Toast.fire({
+                                icon: data.type,
+                                title: data.message
+                            })
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.log('error')
+                        if (xhr.status === 422) {
+                            $('.submit-btn').text('Submit').prop('disabled', false)
+                            const errors = xhr.responseJSON.errors;
+
+                            // Clear previous error messages
+                            $('.error-message').remove();
+
+                            // Display error messages for each input field
+                            Object.keys(errors).forEach(function (field) {
+                                const errorMessage = errors[field][0];
+                                const inputField = $('[name="' + field + '"]');
+                                inputField.after('<span class="error-message text-danger">' + errorMessage + '</span>');
+                            });
+
+                        } else {
+                            console.log('An error occurred:', status, error);
+                        }
+                    }
+                })
+
+            })
+        })
     </script>
 @endsection

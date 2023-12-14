@@ -10,7 +10,7 @@ class AdminDetail extends Model
 {
     use HasFactory;
 
-    protected $fillable = [];
+    protected $guarded = [];
 
     public function admin(): BelongsTo
     {

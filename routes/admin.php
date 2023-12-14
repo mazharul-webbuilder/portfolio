@@ -33,6 +33,7 @@ Route::middleware('admin')->prefix('admin/')->name('admin.')->group(function (){
     Route::post('menu/update', [MenuController::class, 'updateMenu'])->name('menu.update');
     // Setting
     Route::get('/general/setting', [GeneralSettingController::class, 'index'])->name('general.setting');
+    Route::post('/general/setting', [GeneralSettingController::class, 'updateGeneralSetting'])->name('general.setting.update');
     Route::get('/meta/data/setting', [MetaDataSettingController::class, 'index'])->name('meta.data.setting');
     Route::post('/meta/data/setting', [MetaDataSettingController::class, 'updateMetaSetting'])->name('meta.data.setting.update');
 });
