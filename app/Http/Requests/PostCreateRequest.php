@@ -26,7 +26,7 @@ class PostCreateRequest extends FormRequest
             'title' => 'required|string|min:6',
             'time_to_read' => 'required|numeric',
             'description' => 'required|string|min:20',
-            'image' => ['required', 'image', 'mimes:jpg,png,jpeg'],
+            'image' => ['nullable', 'image', 'mimes:jpg,png,jpeg'],
         ];
     }
 }

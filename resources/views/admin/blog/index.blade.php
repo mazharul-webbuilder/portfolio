@@ -73,4 +73,34 @@
             });
         })
     </script>
+
+    {{--Delete Client--}}
+    <script>
+        $(document).ready(function (){
+            $('body').on('click', '.ClientDeleteBtn', function (){
+                const clientId = $(this).data('id')
+                const csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+                $.ajax({
+                    url: '{{route('admin.client.delete')}}',
+                    method: 'POST',
+                    data: {
+                        id: clientId
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken
+                    },
+                    success: function (data) {
+                        if (data.response === 200) {
+                            Toast.fire({
+                                icon: data.type,
+                                title: data.message
+                            })
+                            $('#dataTable').DataTable().ajax.reload();
+                        }
+                    }
+                })
+            })
+        })
+    </script>
 @endsection

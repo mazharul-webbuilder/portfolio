@@ -44,10 +44,10 @@ class BlogController extends Controller
             })
             ->addColumn('action', function ($blog){
                 return '<div>
-                            <button type="button"
-                            data-toggle="modal"
+                            <a
+                            href="'.route('admin.blog.edit', ['id' => $blog->id]).'"
                             class="blogEditBtn btn btn-primary waves-effect waves-light btn btn-primary"
-                            data-id="' . $blog->id . '">Edit</button>
+                        >Edit</a>
                              <button type="button"
                             data-toggle="modal"
                             class="blogDeleteBtn btn btn-danger waves-effect waves-light btn btn-primary"
@@ -91,6 +91,55 @@ class BlogController extends Controller
                 'response' => Response::HTTP_OK,
                 'type' => 'success',
                 'message' => 'Post created Successfully'
+            ]);
+
+        }catch (\Exception $exception){
+            DB::rollBack();
+            return \response()->json([
+                'response' => Response::HTTP_INTERNAL_SERVER_ERROR,
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
+    }
+
+    /**
+     * Edit Blog
+    */
+    public function edit(Blog $id): View
+    {
+        $blogCategories = BlogCategory::all();
+        return \view('admin.blog.edit', compact('id', 'blogCategories'));
+    }
+
+    /**
+     * Update  Data
+     */
+    public function update(PostCreateRequest $request): JsonResponse
+    {
+        try {
+            DB::beginTransaction();
+
+            $blog = Blog::find($request->id);
+
+            $datas = $request->except('_token', 'image');
+
+            $blog->update($datas);
+
+            if ($request->hasFile('image')) {
+                if (!is_null($blog->image)) {
+                    delete_2_type_image_if_exist_latest($blog->image, 'blog-image');
+                }
+                $blog->image = store_2_type_image_nd_get_image_name($request, 'blog-image', 800, 600);
+                $blog->save();
+            }
+
+
+            DB::commit();
+            return \response()->json([
+                'response' => Response::HTTP_OK,
+                'type' => 'success',
+                'message' => 'Blog Post Updated Successfully'
             ]);
 
         }catch (\Exception $exception){

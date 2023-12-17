@@ -66,6 +66,8 @@ Route::middleware('admin')->prefix('admin/')->name('admin.')->group(function (){
     Route::get('/datatable', [BlogController::class, 'datatable'])->name('blog.datatable');
     Route::get('/create/new/blog', [BlogController::class, 'create'])->name('blog.create');
     Route::post('/blog/post', [BlogController::class, 'postBlog'])->name('blog.post');
+    Route::get('/blog/edit/{id}', [BlogController::class, 'edit'])->name('blog.edit');
+    Route::post('/blog/update', [BlogController::class, 'update'])->name('blog.post.update');
 
     // Setting
     Route::get('/general/setting', [GeneralSettingController::class, 'index'])->name('general.setting');
