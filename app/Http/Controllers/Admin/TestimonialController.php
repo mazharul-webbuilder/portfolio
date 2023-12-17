@@ -41,11 +41,11 @@ class TestimonialController extends Controller
                 return '<div>
                             <a
                             href="'.route('admin.blog.edit', ['id' => $testimonial->id]).'"
-                            class="blogEditBtn btn btn-primary waves-effect waves-light btn btn-primary"
+                            class=" btn btn-primary waves-effect waves-light btn btn-primary"
                         >Edit</a>
                              <button type="button"
                             data-toggle="modal"
-                            class="BlogDeleteBtn btn btn-danger waves-effect waves-light btn btn-primary"
+                            class="testimonialDeleteBtn btn btn-danger waves-effect waves-light btn btn-primary"
                             data-id="' . $testimonial->id . '">Delete</button>
                         </div>
                         ';
@@ -154,13 +154,16 @@ class TestimonialController extends Controller
     {
         try {
             DB::beginTransaction();
-            $client = Blog::find($request->id);
+            $client = Testimonial::find($request->id);
+            if (!is_null($client->avatar)) {
+                delete_2_type_image_if_exist_latest(imageName: $client->avatar, folderName: 'testimonial');
+            }
             $client->delete();
             DB::commit();
             return  \response()->json([
                 'response' => Response::HTTP_OK,
                 'type' => 'success',
-                'message' => 'Blog Deleted Successfully'
+                'message' => 'Testimonial Deleted Successfully'
             ]);
         } catch (\Exception $exception) {
             DB::rollBack();

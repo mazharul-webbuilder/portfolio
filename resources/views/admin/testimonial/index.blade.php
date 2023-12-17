@@ -84,32 +84,7 @@
             });
         })
     </script>
-    {{--Edit--}}
-    <script>
-        $(document).ready(function (){
-            $('body').on('click', '.ClientEditBtn', function () {
-                const id = $(this).data('id');
-                const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
-                $.ajax({
-                    url: '{{route('admin.client.get')}}',
-                    method: 'GET',
-                    data: {
-                        id: id
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': csrfToken
-                    },
-                    success: function (data) {
-                        $('#clientId').val(data.id)
-                        $('#ClientName').val(data.name)
-                        $('#clientImage').attr('src', '{{asset('uploads/client/resize')}}' + '/' + data.image)
-                        $('.bs-example-modal-center').modal('show')
-                    }
-                })
-            })
-        })
-    </script>
     {{--Update Client--}}
     <script>
         $(document).ready(function () {
@@ -167,15 +142,15 @@
     {{--Delete Client--}}
     <script>
         $(document).ready(function (){
-            $('body').on('click', '.ClientDeleteBtn', function (){
-                const clientId = $(this).data('id')
+            $('body').on('click', '.testimonialDeleteBtn', function (){
+                const id = $(this).data('id')
                 const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
                 $.ajax({
-                    url: '{{route('admin.client.delete')}}',
+                    url: '{{route('admin.testimonial.delete')}}',
                     method: 'POST',
                     data: {
-                        id: clientId
+                        id: id
                     },
                     headers: {
                         'X-CSRF-TOKEN': csrfToken

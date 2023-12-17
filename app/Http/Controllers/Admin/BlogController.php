@@ -159,8 +159,11 @@ class BlogController extends Controller
     {
         try {
             DB::beginTransaction();
-            $client = Blog::find($request->id);
-            $client->delete();
+            $blog = Blog::find($request->id);
+            if (!is_null($blog->image)) {
+                delete_2_type_image_if_exist_latest($blog->image, 'blog-image');
+            }
+            $blog->delete();
             DB::commit();
             return  \response()->json([
                 'response' => Response::HTTP_OK,
