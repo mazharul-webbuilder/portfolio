@@ -46,11 +46,11 @@ class PortfolioController extends Controller
                 return '<div>
                             <button type="button"
                             data-toggle="modal"
-                            class="ClientEditBtn btn btn-primary waves-effect waves-light btn btn-primary"
+                            class="portfolioEditBtn btn btn-primary waves-effect waves-light btn btn-primary"
                             data-id="' . $portfolio->id . '">Edit</button>
                              <button type="button"
                             data-toggle="modal"
-                            class="ClientDeleteBtn btn btn-danger waves-effect waves-light btn btn-primary"
+                            class="portfolioDeleteBtn btn btn-danger waves-effect waves-light btn btn-primary"
                             data-id="' . $portfolio->id . '">Delete</button>
                         </div>
                         ';
@@ -94,6 +94,31 @@ class PortfolioController extends Controller
             DB::rollBack();
             return \response()->json([
                 'response' => Response::HTTP_INTERNAL_SERVER_ERROR,
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
+    }
+
+    /**
+     * Delete
+     */
+    public function delete(Request $request): JsonResponse
+    {
+        try {
+            DB::beginTransaction();
+            $client = Portfolio::find($request->id);
+            $client->delete();
+            DB::commit();
+            return  \response()->json([
+                'response' => Response::HTTP_OK,
+                'type' => 'success',
+                'message' => 'Portfolio Deleted Successfully'
+            ]);
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            return response()->json([
+                'response' => Response::HTTP_OK,
                 'type' => 'error',
                 'message' => $exception->getMessage()
             ]);
