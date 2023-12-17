@@ -12,14 +12,17 @@
         <div class="row" style="margin-top: 80px">
             <div class="col-md-12">
                 <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center mb-4">
-                    <h2 class="mb-0 text-light">Client List</h2>
-                    <a href="{{route('admin.client.create')}}" class="btn btn-success">Add New Client</a>
+                    <h2 class="mb-0 text-light">Portfolio List</h2>
+                    <a href="" class="btn btn-success">Add New Portfolio</a>
                 </div>
                 <table class="table table-striped table-bordered" id="dataTable" style="width: 100% !important;">
                     <thead>
                     <tr>
                         <th>S/L</th>
-                        <th>name</th>
+                        <th>Category</th>
+                        <th>title</th>
+                        <th>Short Description</th>
+                        <th>Favorite</th>
                         <th>image</th>
                         <th>Action</th>
                     </tr>
@@ -72,15 +75,24 @@
                 paging: true,
                 searching: true,
                 serverSide: true,
-                ajax: '{{ route('admin.clients.datatable') }}',
+                ajax: '{{ route('admin.portfolio.datatable') }}',
                 columns: [
                     {
                         data: 'id',
                         name: 'id'
                     }, {
-                        data: 'name',
-                        name: 'name'
+                        data: 'category',
+                        name: 'category'
+                    },{
+                        data: 'title',
+                        name: 'title'
                     }, {
+                        data: 'short_description',
+                        name: 'short_description'
+                    },{
+                        data: 'favorite',
+                        name: 'favorite'
+                    },{
                         data: 'image',
                         name: 'image'
                     }, {
