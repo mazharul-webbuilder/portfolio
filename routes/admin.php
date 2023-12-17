@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ClientsController;
 use App\Http\Controllers\Admin\GeneralSettingController;
 use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\PricingController;
+use App\Http\Controllers\Admin\BlogController;
 
 /**
  * Admin Routes
@@ -59,6 +60,11 @@ Route::middleware('admin')->prefix('admin/')->name('admin.')->group(function (){
     Route::get('/datatable', [PricingController::class, 'datatable'])->name('pricing.datatable');
     Route::get('/edit/price/{id}', [PricingController::class, 'edit'])->name('pricing.edit');
     Route::post('/update/price/info', [PricingController::class, 'update'])->name('pricing.update');
+
+    // Blog
+    Route::get('/blogs', [BlogController::class, 'index'])->name('blogs');
+    Route::get('/datatable', [BlogController::class, 'datatable'])->name('blog.datatable');
+
     // Setting
     Route::get('/general/setting', [GeneralSettingController::class, 'index'])->name('general.setting');
     Route::post('/general/setting', [GeneralSettingController::class, 'updateGeneralSetting'])->name('general.setting.update');

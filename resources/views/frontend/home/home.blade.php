@@ -794,6 +794,7 @@
         </div>
         <!-- pricing area -->
         @endif
+        @if(!is_null(\App\Models\Menu::where(['constant_name' => 'blog', 'status' => 1])->first()))
         <!-- Start News Area -->
         <div class="rn-blog-area rn-section-gap section-separator" id="blog">
             <div class="container">
@@ -813,7 +814,8 @@
                             <div class="inner">
                                 <div class="thumbnail">
                                     <a href="javascript:void(0)">
-                                        <img src="{{asset('frontend/assets')}}/images/blog/blog-01.jpg" alt="Personal Portfolio Images">
+                                        {{--800x600--}}
+                                        <img src="{{asset('uploads/blog-image/resize' . '/' . $blog->image)}}" alt="blog Images">
                                     </a>
                                 </div>
                                 <div class="content">
@@ -837,6 +839,7 @@
             </div>
         </div>
         <!-- ENd Mews Area -->
+        @endif
         <!-- Start Contact section -->
         <div class="rn-contact-area rn-section-gap section-separator" id="contacts">
             <div class="container">

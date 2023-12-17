@@ -255,6 +255,14 @@
                         </a>
                     </li>
                     @endif
+                    @if(!is_null(\App\Models\Menu::where(['constant_name' => 'blog', 'status' => 1])->first()))
+                    <li>
+                        <a href="{{route('admin.blogs')}}" class="waves-effect">
+                            <i class="bx bx-news"></i>
+                            <span>Blogs</span>
+                        </a>
+                    </li>
+                    @endif
 
                     <li class="menu-title">Apps</li>
                     <li>
