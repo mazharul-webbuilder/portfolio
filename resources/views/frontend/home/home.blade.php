@@ -137,7 +137,7 @@
                             <div class="inner">
                                 <div class="thumbnail">
                                     <a href="javascript:void(0)">
-                                        <img src="{{asset('frontend/assets')}}/images/portfolio/portfolio-01.jpg" alt="Personal Portfolio Images">
+                                        <img src="{{asset('uploads/portfolio/resize' . '/' . $portfolio->image)}}" alt="Personal Portfolio Images">
                                     </a>
                                 </div>
                                 <div class="content">
