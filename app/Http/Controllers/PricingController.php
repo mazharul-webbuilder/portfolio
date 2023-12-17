@@ -28,7 +28,7 @@ class PricingController extends Controller
      */
     public function datatable(): JsonResponse
     {
-        $query = Pricing::query()->orderByDesc('id');
+        $query = Pricing::query()->orderBy('id', 'ASC');
 
         return DataTables::of($query)
             ->addColumn('category', function ($price){
