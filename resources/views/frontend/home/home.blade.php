@@ -567,7 +567,8 @@
                                 <div class="inner">
                                     <div class="card-info">
                                         <div class="card-thumbnail">
-                                            <img src="{{asset('frontend/assets')}}/images/testimonial/final-home--1st.png" alt="Testimonial-image">
+                                            {{--335x252--}}
+                                            <img src="{{asset('uploads/testimonial/resize'. '/'. $testimonial->avatar)}}" alt="Testimonial-image">
                                         </div>
                                         <div class="card-content">
                                             <span class="subtitle mt--10">{{$testimonial->organization_name}}</span>
