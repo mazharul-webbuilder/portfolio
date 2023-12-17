@@ -9,6 +9,8 @@ class Client extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'image', 'client_category_id'];
+
     public function clientCategory(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(ClientCategory::class);

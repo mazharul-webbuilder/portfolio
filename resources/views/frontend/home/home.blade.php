@@ -6,10 +6,6 @@
 
 @endsection
 @section('content')
-
-
-
-
     <main class="main-page-wrapper">
 
         <!-- Start Slider Area -->

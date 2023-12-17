@@ -13,7 +13,7 @@
             <div class="col-md-12">
                 <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center mb-4">
                     <h2 class="mb-0 text-light">Client List</h2>
-                    <button class="btn btn-success">Add New Client</button>
+                    <a href="{{route('admin.client.create')}}" class="btn btn-success">Add New Client</a>
                 </div>
                 <table class="table table-striped table-bordered" id="dataTable" style="width: 100% !important;">
                     <thead>

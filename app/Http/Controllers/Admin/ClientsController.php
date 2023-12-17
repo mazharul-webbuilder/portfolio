@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ClientCreateRequest;
 use App\Http\Requests\ClientUpdateReqeust;
 use App\Models\Client;
 use Illuminate\Contracts\View\View;
@@ -53,6 +54,50 @@ class ClientsController extends Controller
             })
             ->rawColumns(['action', 'image'])
             ->make(true);
+    }
+
+    /**
+     * Create Client page show
+    */
+    public function create(): View
+    {
+        return \view('admin.client.create');
+    }
+
+    /**
+     * Store New Client
+    */
+    public function store(ClientCreateRequest $request): JsonResponse
+    {
+        try {
+            DB::beginTransaction();
+            $datas = $request->except('image', '_token');
+
+            $datas['client_category_id'] = 1;
+
+            $client = Client::create($datas);
+
+
+            if ($request->hasFile('image')) {
+                $client->image = store_2_type_image_nd_get_image_name(request: $request, folderName: 'client');
+                $client->save();
+            }
+
+            DB::commit();
+            return \response()->json([
+                'response' => Response::HTTP_OK,
+                'type' => 'success',
+                'message' => 'Client Created Successfully'
+            ]);
+
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            return \response()->json([
+                'response' => Response::HTTP_INTERNAL_SERVER_ERROR,
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
     }
 
     /**
