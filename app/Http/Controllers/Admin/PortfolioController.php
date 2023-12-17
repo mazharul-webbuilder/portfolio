@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PortfolioCreateRequest;
 use App\Models\Portfolio;
+use App\Models\PortfolioCategory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 
 class PortfolioController extends Controller
@@ -53,5 +57,46 @@ class PortfolioController extends Controller
             })
             ->rawColumns(['action', 'image'])
             ->make(true);
+    }
+
+    /**
+     * Create Portfolio
+    */
+    public function create(): View
+    {
+        $portfolioCategories = PortfolioCategory::all();
+
+        return \view('admin.portfolio.create', compact('portfolioCategories'));
+    }
+
+    /**
+     * Store data
+    */
+    public function store(PortfolioCreateRequest $request): JsonResponse
+    {
+        try {
+            DB::beginTransaction();
+            $datas = $request->validated();
+            $datas['favorite'] = rand(10, 500);
+            unset($datas['image']);
+            $portfolio = Portfolio::create($datas);
+            if ($request->hasFile('image')) {
+                $portfolio->image = store_2_type_image_nd_get_image_name(request: $request, folderName: 'portfolio', resize_width: 800, resize_height: 600);
+                $portfolio->save();
+            }
+            DB::commit();
+            return response()->json([
+                'response' => Response::HTTP_OK,
+                'type' => 'success',
+                'message' => 'Portfolio created successfully'
+            ]);
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            return \response()->json([
+                'response' => Response::HTTP_INTERNAL_SERVER_ERROR,
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
     }
 }

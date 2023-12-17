@@ -50,6 +50,8 @@ Route::middleware('admin')->prefix('admin/')->name('admin.')->group(function (){
     // Portfolio
     Route::get('/portfolios', [PortfolioController::class, 'index'])->name('portfolio');
     Route::get('/portfolios/datatable', [PortfolioController::class, 'datatable'])->name('portfolio.datatable');
+    Route::get('/portfolios/create', [PortfolioController::class, 'create'])->name('portfolio.create');
+    Route::post('/portfolios/create', [PortfolioController::class, 'store'])->name('portfolio.store');
     // Setting
     Route::get('/general/setting', [GeneralSettingController::class, 'index'])->name('general.setting');
     Route::post('/general/setting', [GeneralSettingController::class, 'updateGeneralSetting'])->name('general.setting.update');
