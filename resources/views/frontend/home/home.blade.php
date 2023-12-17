@@ -694,16 +694,16 @@
                                                 <span>ORDER NOW</span>
                                                 <i data-feather="arrow-right"></i>
                                             </a>
-                                            <div class="time-line">
-                                                <div class="single-cmt d-flex">
-                                                    <i data-feather="clock"></i>
-                                                    <span>2 Days Delivery</span>
-                                                </div>
-                                                <div class="single-cmt d-flex">
-                                                    <i data-feather="activity"></i>
-                                                    <span>Unlimited Revission</span>
-                                                </div>
-                                            </div>
+{{--                                            <div class="time-line">--}}
+{{--                                                <div class="single-cmt d-flex">--}}
+{{--                                                    <i data-feather="clock"></i>--}}
+{{--                                                    <span>2 Days Delivery</span>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="single-cmt d-flex">--}}
+{{--                                                    <i data-feather="activity"></i>--}}
+{{--                                                    <span>Unlimited Revission</span>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
                                         </div>
                                     </div>
                                     <!-- End -->
@@ -732,16 +732,16 @@
                                                 <span>ORDER NOW</span>
                                                 <i data-feather="arrow-right"></i>
                                             </a>
-                                            <div class="time-line d-flex">
-                                                <div class="single-cmt d-flex">
-                                                    <i data-feather="clock"></i>
-                                                    <span>2 Days Delivery</span>
-                                                </div>
-                                                <div class="single-cmt d-flex">
-                                                    <i data-feather="activity"></i>
-                                                    <span>Unlimited Revission</span>
-                                                </div>
-                                            </div>
+{{--                                            <div class="time-line d-flex">--}}
+{{--                                                <div class="single-cmt d-flex">--}}
+{{--                                                    <i data-feather="clock"></i>--}}
+{{--                                                    <span>2 Days Delivery</span>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="single-cmt d-flex">--}}
+{{--                                                    <i data-feather="activity"></i>--}}
+{{--                                                    <span>Unlimited Revission</span>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
                                         </div>
                                     </div>
                                     <!-- End -->
@@ -771,16 +771,16 @@
                                                 <span>ORDER NOW</span>
                                                 <i data-feather="arrow-right"></i>
                                             </a>
-                                            <div class="time-line d-flex">
-                                                <div class="single-cmt d-flex">
-                                                    <i data-feather="clock"></i>
-                                                    <span>2 Days Delivery</span>
-                                                </div>
-                                                <div class="single-cmt d-flex">
-                                                    <i data-feather="activity"></i>
-                                                    <span>Unlimited Revission</span>
-                                                </div>
-                                            </div>
+{{--                                            <div class="time-line d-flex">--}}
+{{--                                                <div class="single-cmt d-flex">--}}
+{{--                                                    <i data-feather="clock"></i>--}}
+{{--                                                    <span>2 Days Delivery</span>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="single-cmt d-flex">--}}
+{{--                                                    <i data-feather="activity"></i>--}}
+{{--                                                    <span>Unlimited Revission</span>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
                                         </div>
                                     </div>
                                     <!-- End -->
