@@ -9,6 +9,8 @@ class Pricing extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function pricingCategory(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(PricingCategory::class);

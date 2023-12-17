@@ -57,6 +57,8 @@ Route::middleware('admin')->prefix('admin/')->name('admin.')->group(function (){
     // Pricing
     Route::get('/pricing', [PricingController::class, 'index'])->name('pricing');
     Route::get('/datatable', [PricingController::class, 'datatable'])->name('pricing.datatable');
+    Route::get('/edit/price/{id}', [PricingController::class, 'edit'])->name('pricing.edit');
+    Route::post('/update/price/info', [PricingController::class, 'update'])->name('pricing.update');
     // Setting
     Route::get('/general/setting', [GeneralSettingController::class, 'index'])->name('general.setting');
     Route::post('/general/setting', [GeneralSettingController::class, 'updateGeneralSetting'])->name('general.setting.update');
