@@ -686,58 +686,7 @@
                                                 {{$staticPricing->short_description}}
                                             </p>
                                             <div class="check-wrapper">
-                                                <div class="left-area">
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>1 Page with Elementor</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Design Customization</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Responsive Design</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Content Upload</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Design Customization</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>2 Plugins/Extensions</p>
-                                                    </div>
-                                                </div>
-                                                <div class="right-area">
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>multipage Elementor</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Design Figma</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>MAintaine Design</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Content Upload</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Design With XD</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>8 Plugins/Extensions</p>
-                                                    </div>
-                                                </div>
+                                                {{$staticPricing->long_description}}
                                             </div>
                                         </div>
                                         <div class="pricing-footer">
@@ -775,58 +724,7 @@
                                             <p class="description">{{$staticPricing->short_description}}
                                             </p>
                                             <div class="check-wrapper">
-                                                <div class="left-area">
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>1 Page with Elementor</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Design Customization</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Responsive Design</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Content Upload</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Design Customization</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>2 Plugins/Extensions</p>
-                                                    </div>
-                                                </div>
-                                                <div class="right-area">
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>multipage Elementor</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Design Figma</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>MAintaine Design</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Content Upload</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Design With XD</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>8 Plugins/Extensions</p>
-                                                    </div>
-                                                </div>
+                                                {{$staticPricing->long_description}}
                                             </div>
                                         </div>
                                         <div class="pricing-footer">
@@ -865,58 +763,7 @@
                                                 {{$staticPricing->short_description}}
                                             </p>
                                             <div class="check-wrapper">
-                                                <div class="left-area">
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>1 Page with Elementor</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Design Customization</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Responsive Design</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Content Upload</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Design Customization</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>2 Plugins/Extensions</p>
-                                                    </div>
-                                                </div>
-                                                <div class="right-area">
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>multipage Elementor</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Design Figma</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>MAintaine Design</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Content Upload</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Design With XD</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>8 Plugins/Extensions</p>
-                                                    </div>
-                                                </div>
+                                                {{$staticPricing->long_description}}
                                             </div>
                                         </div>
                                         <div class="pricing-footer">
