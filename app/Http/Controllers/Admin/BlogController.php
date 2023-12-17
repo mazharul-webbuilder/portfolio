@@ -50,7 +50,7 @@ class BlogController extends Controller
                         >Edit</a>
                              <button type="button"
                             data-toggle="modal"
-                            class="blogDeleteBtn btn btn-danger waves-effect waves-light btn btn-primary"
+                            class="BlogDeleteBtn btn btn-danger waves-effect waves-light btn btn-primary"
                             data-id="' . $blog->id . '">Delete</button>
                         </div>
                         ';
@@ -146,6 +146,31 @@ class BlogController extends Controller
             DB::rollBack();
             return \response()->json([
                 'response' => Response::HTTP_INTERNAL_SERVER_ERROR,
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
+    }
+
+    /**
+     * Delete
+     */
+    public function delete(Request $request): JsonResponse
+    {
+        try {
+            DB::beginTransaction();
+            $client = Blog::find($request->id);
+            $client->delete();
+            DB::commit();
+            return  \response()->json([
+                'response' => Response::HTTP_OK,
+                'type' => 'success',
+                'message' => 'Blog Deleted Successfully'
+            ]);
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            return response()->json([
+                'response' => Response::HTTP_OK,
                 'type' => 'error',
                 'message' => $exception->getMessage()
             ]);

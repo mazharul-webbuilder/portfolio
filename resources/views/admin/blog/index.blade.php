@@ -77,15 +77,15 @@
     {{--Delete Client--}}
     <script>
         $(document).ready(function (){
-            $('body').on('click', '.ClientDeleteBtn', function (){
-                const clientId = $(this).data('id')
+            $('body').on('click', '.BlogDeleteBtn', function (){
+                const blogId = $(this).data('id')
                 const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
                 $.ajax({
-                    url: '{{route('admin.client.delete')}}',
+                    url: '{{route('admin.blog.delete')}}',
                     method: 'POST',
                     data: {
-                        id: clientId
+                        id: blogId
                     },
                     headers: {
                         'X-CSRF-TOKEN': csrfToken

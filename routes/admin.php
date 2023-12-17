@@ -68,6 +68,7 @@ Route::middleware('admin')->prefix('admin/')->name('admin.')->group(function (){
     Route::post('/blog/post', [BlogController::class, 'postBlog'])->name('blog.post');
     Route::get('/blog/edit/{id}', [BlogController::class, 'edit'])->name('blog.edit');
     Route::post('/blog/update', [BlogController::class, 'update'])->name('blog.post.update');
+    Route::post('/blog/delete', [BlogController::class, 'delete'])->name('blog.delete');
 
     // Setting
     Route::get('/general/setting', [GeneralSettingController::class, 'index'])->name('general.setting');
