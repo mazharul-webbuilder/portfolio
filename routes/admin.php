@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\GeneralSettingController;
 use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\TestimonialController;
 
 /**
  * Admin Routes
@@ -69,6 +70,10 @@ Route::middleware('admin')->prefix('admin/')->name('admin.')->group(function (){
     Route::get('/blog/edit/{id}', [BlogController::class, 'edit'])->name('blog.edit');
     Route::post('/blog/update', [BlogController::class, 'update'])->name('blog.post.update');
     Route::post('/blog/delete', [BlogController::class, 'delete'])->name('blog.delete');
+
+    // Testimonials
+    Route::get('/testimonials', [TestimonialController::class, 'index'])->name('testimonials');
+    Route::get('/testimonials/datatable', [TestimonialController::class, 'datatable'])->name('testimonial.datatable');
 
     // Setting
     Route::get('/general/setting', [GeneralSettingController::class, 'index'])->name('general.setting');

@@ -263,6 +263,12 @@
                         </a>
                     </li>
                     @endif
+                    <li>
+                        <a href="{{route('admin.testimonials')}}" class="waves-effect">
+                            <i class="bx bx-news"></i>
+                            <span>Testimonials</span>
+                        </a>
+                    </li>
 
                     <li class="menu-title">Apps</li>
                     <li>
