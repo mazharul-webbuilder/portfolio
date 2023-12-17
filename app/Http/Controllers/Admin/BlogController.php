@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PostCreateRequest;
 use App\Models\Blog;
+use App\Models\BlogCategory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 
 class BlogController extends Controller
@@ -54,5 +58,51 @@ class BlogController extends Controller
             ->rawColumns(['action', 'image'])
             ->make(true);
     }
+
+    /**
+     * Blog create page
+    */
+    public function create(): View
+    {
+        $blogCategories = BlogCategory::all();
+
+        return \view('admin.blog.create', compact('blogCategories'));
+    }
+
+    /**
+     * Post new blog
+    */
+    public function postBlog(PostCreateRequest $request): JsonResponse
+    {
+        try {
+            DB::beginTransaction();
+
+            $datas = $request->except('_token', 'image');
+
+            $blog = Blog::create($datas);
+
+            if ($request->hasFile('image')) {
+                $blog->image = store_2_type_image_nd_get_image_name(request: $request, folderName:  'blog-image', resize_width: 800, resize_height: 600);
+                $blog->save();
+            }
+
+            DB::commit();
+            return \response()->json([
+                'response' => Response::HTTP_OK,
+                'type' => 'success',
+                'message' => 'Post created Successfully'
+            ]);
+
+        }catch (\Exception $exception){
+            DB::rollBack();
+            return \response()->json([
+                'response' => Response::HTTP_INTERNAL_SERVER_ERROR,
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
+    }
+
+
 
 }

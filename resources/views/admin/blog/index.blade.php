@@ -12,7 +12,8 @@
         <div class="row" style="margin-top: 80px">
             <div class="col-md-12">
                 <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center mb-4">
-                    <h2 class="mb-0 text-light">Pricing List</h2>
+                    <h2 class="mb-0 text-light">Blog List</h2>
+                    <a href="{{route('admin.blog.create')}}" class="btn btn-success">Add New Blog</a>
                 </div>
                 <table class="table table-striped table-bordered" id="dataTable" style="width: 100% !important;">
                     <thead>
