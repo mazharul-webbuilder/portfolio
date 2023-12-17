@@ -58,7 +58,7 @@ Route::middleware('admin')->prefix('admin/')->name('admin.')->group(function (){
     Route::post('/portfolios/delete', [PortfolioController::class, 'delete'])->name('portfolio.delete');
     // Pricing
     Route::get('/pricing', [PricingController::class, 'index'])->name('pricing');
-    Route::get('/datatable', [PricingController::class, 'datatable'])->name('pricing.datatable');
+    Route::get('/get/pricing/datatable', [PricingController::class, 'datatable'])->name('pricing.datatable');
     Route::get('/edit/price/{id}', [PricingController::class, 'edit'])->name('pricing.edit');
     Route::post('/update/price/info', [PricingController::class, 'update'])->name('pricing.update');
 
