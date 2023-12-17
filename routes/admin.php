@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\MetaDataSettingController;
 use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\ClientsController;
 use App\Http\Controllers\Admin\GeneralSettingController;
+use App\Http\Controllers\Admin\PortfolioController;
 
 /**
  * Admin Routes
@@ -46,6 +47,8 @@ Route::middleware('admin')->prefix('admin/')->name('admin.')->group(function (){
     Route::get('/client/get', [ClientsController::class, 'getClient'])->name('client.get');
     Route::post('/client/update', [ClientsController::class, 'update'])->name('client.update');
     Route::post('/clients/delete', [ClientsController::class, 'delete'])->name('client.delete');
+    // Portfolio
+    Route::get('/portfolios', [PortfolioController::class, 'index'])->name('portfolio');
     // Setting
     Route::get('/general/setting', [GeneralSettingController::class, 'index'])->name('general.setting');
     Route::post('/general/setting', [GeneralSettingController::class, 'updateGeneralSetting'])->name('general.setting.update');

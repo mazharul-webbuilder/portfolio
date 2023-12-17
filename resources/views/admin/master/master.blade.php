@@ -239,6 +239,14 @@
                         </a>
                     </li>
                     @endif
+                    @if(!is_null(\App\Models\Menu::where(['constant_name' => 'portfolio', 'status' => 1])->first()))
+                    <li>
+                        <a href="{{route('admin.portfolio')}}" class="waves-effect">
+                            <i class="bx bx-archive"></i>
+                            <span>Portfolio</span>
+                        </a>
+                    </li>
+                    @endif
 
                     <li class="menu-title">Apps</li>
                     <li>
