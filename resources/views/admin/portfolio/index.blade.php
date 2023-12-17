@@ -5,7 +5,7 @@
 @endsection
 
 @section('title')
-    Clients
+    Portfolios
 @endsection
 @section('content')
     <div class="container mt-5 pb-5">
