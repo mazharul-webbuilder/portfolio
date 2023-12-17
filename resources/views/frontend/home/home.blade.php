@@ -637,6 +637,7 @@
         </div>
         <!-- End client section -->
         @endif
+        @if(!is_null(\App\Models\Menu::where(['constant_name' => 'pricing', 'status' => 1])->first()))
         <!-- Pricing Area -->
         <div class="rn-pricing-area rn-section-gap section-separator" id="pricing">
             <div class="container">
@@ -945,6 +946,7 @@
             </div>
         </div>
         <!-- pricing area -->
+        @endif
         <!-- Start News Area -->
         <div class="rn-blog-area rn-section-gap section-separator" id="blog">
             <div class="container">

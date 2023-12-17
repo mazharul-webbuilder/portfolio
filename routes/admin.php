@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\ClientsController;
 use App\Http\Controllers\Admin\GeneralSettingController;
 use App\Http\Controllers\Admin\PortfolioController;
+use App\Http\Controllers\PricingController;
 
 /**
  * Admin Routes
@@ -53,6 +54,9 @@ Route::middleware('admin')->prefix('admin/')->name('admin.')->group(function (){
     Route::get('/portfolios/create', [PortfolioController::class, 'create'])->name('portfolio.create');
     Route::post('/portfolios/create', [PortfolioController::class, 'store'])->name('portfolio.store');
     Route::post('/portfolios/delete', [PortfolioController::class, 'delete'])->name('portfolio.delete');
+    // Pricing
+    Route::get('/pricing', [PricingController::class, 'index'])->name('pricing');
+    Route::get('/datatable', [PricingController::class, 'datatable'])->name('pricing.datatable');
     // Setting
     Route::get('/general/setting', [GeneralSettingController::class, 'index'])->name('general.setting');
     Route::post('/general/setting', [GeneralSettingController::class, 'updateGeneralSetting'])->name('general.setting.update');

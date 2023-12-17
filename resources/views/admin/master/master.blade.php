@@ -247,6 +247,14 @@
                         </a>
                     </li>
                     @endif
+                    @if(!is_null(\App\Models\Menu::where(['constant_name' => 'pricing', 'status' => 1])->first()))
+                    <li>
+                        <a href="{{route('admin.pricing')}}" class="waves-effect">
+                            <i class="bx bx-dollar"></i>
+                            <span>Pricing</span>
+                        </a>
+                    </li>
+                    @endif
 
                     <li class="menu-title">Apps</li>
                     <li>
