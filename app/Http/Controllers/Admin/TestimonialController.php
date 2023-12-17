@@ -59,9 +59,7 @@ class TestimonialController extends Controller
      */
     public function create(): View
     {
-        $blogCategories = BlogCategory::all();
-
-        return \view('admin.blog.create', compact('blogCategories'));
+        return \view('admin.testimonial.create');
     }
 
     /**
