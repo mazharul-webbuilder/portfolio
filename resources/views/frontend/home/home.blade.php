@@ -116,6 +116,7 @@
         <!-- End Service Area  -->
         @endif
 
+        @if(!is_null(\App\Models\Menu::where(['constant_name' => 'portfolio', 'status' => 1])->first()))
         <!-- Start Portfolio Area -->
         <div class="rn-portfolio-area rn-section-gap section-separator" id="portfolio">
             <div class="container">
@@ -161,6 +162,8 @@
             </div>
         </div>
         <!-- End portfolio Area -->
+        @endif
+
         <!-- Start Resume Area -->
         <div class="rn-resume-area rn-section-gap section-separator" id="resume">
             <div class="container">
