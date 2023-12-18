@@ -95,6 +95,7 @@ Route::middleware('admin')->prefix('admin/')->name('admin.')->group(function (){
     // Skills
     Route::get('/skills', [SkillController::class, 'index'])->name('skills');
     Route::get('/skills/datatable', [SkillController::class, 'datatable'])->name('skills.datatable');
+    Route::post('/skills/delete', [SkillController::class, 'delete'])->name('skill.delete');
 
     // Setting
     Route::get('/general/setting', [GeneralSettingController::class, 'index'])->name('general.setting');

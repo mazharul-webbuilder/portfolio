@@ -64,12 +64,12 @@
     {{--Delete Client--}}
     <script>
         $(document).ready(function (){
-            $('body').on('click', '.educationDeleteBtn', function (){
+            $('body').on('click', '.skillDeleteBtn', function (){
                 const id = $(this).data('id')
                 const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
                 $.ajax({
-                    url: '{{route('admin.education.delete')}}',
+                    url: '{{route('admin.skill.delete')}}',
                     method: 'POST',
                     data: {
                         id: id
