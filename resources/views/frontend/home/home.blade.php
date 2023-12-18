@@ -812,8 +812,9 @@
                 <div class="row row--25 mt--30 mt_md--10 mt_sm--10">
                     @foreach($blogs as $blog)
                     <!-- Start Single blog -->
-                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30">
-                        <div class="rn-blog" data-bs-toggle="modal" data-bs-target="#exampleModalCenters">
+                    <div data-aos="fade-up" data-aos-duration="500" data-id="{{$blog->id}}" data-aos-delay="100" data-aos-once="true"
+                         class="blogDetailBtn col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30">
+                        <div class="rn-blog" data-bs-toggle="modal"  data-bs-target="#exampleModalCenters">
                             <div class="inner">
                                 <div class="thumbnail">
                                     <a href="javascript:void(0)">
@@ -997,63 +998,11 @@
                     <!-- End of .modal-header -->
 
                     <div class="modal-body">
-                        <img src="{{asset('frontend/assets')}}/images/blog/blog-big-01.jpg" alt="news modal" class="img-fluid modal-feat-img">
+                        <img src="" id="blogImage" alt="news modal" class="img-fluid modal-feat-img">
                         <div class="news-details">
-                            <span class="date">2 May, 2021</span>
-                            <h2 class="title">Digital Marketo to Their New Office.</h2>
-                            <p>Nobis eleifend option congue nihil imperdiet doming id quod mazim placerat
-                                facer
-                                possim assum.
-                                Typi non
-                                habent claritatem insitam; est usus legentis in iis qui facit eorum
-                                claritatem.
-                                Investigationes
-                                demonstraverunt
-                                lectores legere me lius quod ii legunt saepius. Claritas est etiam processus
-                                dynamicus, qui
-                                sequitur
-                                mutationem consuetudium lectorum.</p>
-                            <h4>Nobis eleifend option conguenes.</h4>
-                            <p>Mauris tempor, orci id pellentesque convallis, massa mi congue eros, sed
-                                posuere
-                                massa nunc quis
-                                dui.
-                                Integer ornare varius mi, in vehicula orci scelerisque sed. Fusce a massa
-                                nisi.
-                                Curabitur sit
-                                amet
-                                suscipit nisl. Sed eget nisl laoreet, suscipit enim nec, viverra eros. Nunc
-                                imperdiet risus
-                                leo,
-                                in rutrum erat dignissim id.</p>
-                            <p>Ut rhoncus vestibulum facilisis. Duis et lorem vitae ligula cursus venenatis.
-                                Class aptent
-                                taciti sociosqu
-                                ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc vitae
-                                nisi
-                                tortor. Morbi
-                                leo
-                                nulla, posuere vel lectus a, egestas posuere lacus. Fusce eleifend hendrerit
-                                bibendum. Morbi
-                                nec
-                                efficitur ex.</p>
-                            <h4>Mauris tempor, orci id pellentesque.</h4>
-                            <p>Nulla non ligula vel nisi blandit egestas vel eget leo. Praesent fringilla
-                                dapibus dignissim.
-                                Pellentesque
-                                quis quam enim. Vestibulum ultrices, leo id suscipit efficitur, odio lorem
-                                rhoncus dolor, a
-                                facilisis
-                                neque mi ut ex. Quisque tempor urna a nisi pretium, a pretium massa
-                                tristique.
-                                Nullam in
-                                aliquam
-                                diam. Maecenas at nibh gravida, ornare eros non, commodo ligula. Sed
-                                efficitur
-                                sollicitudin
-                                auctor.
-                                Quisque nec imperdiet purus, in ornare odio. Quisque odio felis, vestibulum
-                                et.</p>
+                            <span class="date" id="blogCreatedDate">2 May, 2021</span>
+                            <h2 class="title" id="blogTitle">Digital Marketo to Their New Office.</h2>
+                            <div class="" id="blogDescription"></div>
                         </div>
 
                         <!-- Comment Section Area Start -->
@@ -1819,6 +1768,26 @@
                 });
             })
 
+        })
+    </script>
+    <script>
+        $('document').ready(function () {
+            $('.blogDetailBtn').on('click', function (){
+                const blogId = $(this).data('id')
+                $.ajax({
+                    url: '{{route('blog.details')}}',
+                    method: 'GET',
+                    data: {
+                        id: blogId
+                    },
+                    success: function (data) {
+                        $('#blogCreatedDate').text(data.created_at)
+                        $('#blogTitle').text(data.title)
+                        $('#blogDescription').text(data.description)
+                        $('#blogImage').attr('src', data.thumbnail)
+                    }
+                })
+            })
         })
     </script>
 @endsection
