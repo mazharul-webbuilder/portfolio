@@ -106,6 +106,7 @@ Route::middleware('admin')->prefix('admin/')->name('admin.')->group(function (){
     Route::get('/get/experiences/datatable', [ExperienceController::class, 'datatable'])->name('experiences.datatable');
     Route::get('/create/experience', [ExperienceController::class, 'create'])->name('experiences.create');
     Route::post('/store/experience', [ExperienceController::class, 'store'])->name('experience.store');
+    Route::post('/delete/experience', [ExperienceController::class, 'delete'])->name('experience.delete');
 
     // Setting
     Route::get('/general/setting', [GeneralSettingController::class, 'index'])->name('general.setting');

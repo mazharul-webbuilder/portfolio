@@ -80,12 +80,12 @@
     {{--Delete Client--}}
     <script>
         $(document).ready(function (){
-            $('body').on('click', '.educationDeleteBtn', function (){
+            $('body').on('click', '.experienceDeleteBtn', function (){
                 const id = $(this).data('id')
                 const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
                 $.ajax({
-                    url: '{{route('admin.education.delete')}}',
+                    url: '{{route('admin.experience.delete')}}',
                     method: 'POST',
                     data: {
                         id: id
