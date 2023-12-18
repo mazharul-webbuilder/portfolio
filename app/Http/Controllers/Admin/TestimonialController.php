@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TestimonialCreateRequest;
 use App\Models\Testimonial;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
@@ -65,25 +66,25 @@ class TestimonialController extends Controller
     /**
      * Post new blog
      */
-    public function postBlog(PostCreateRequest $request): JsonResponse
+    public function store(TestimonialCreateRequest $request): JsonResponse
     {
         try {
             DB::beginTransaction();
 
             $datas = $request->except('_token', 'image');
 
-            $blog = Blog::create($datas);
+            $testimonial = Testimonial::create($datas);
 
             if ($request->hasFile('image')) {
-                $blog->image = store_2_type_image_nd_get_image_name(request: $request, folderName:  'blog-image', resize_width: 800, resize_height: 600);
-                $blog->save();
+                $testimonial->avatar = store_2_type_image_nd_get_image_name(request: $request, folderName:  'testimonial', resize_width: 335, resize_height: 252);
+                $testimonial->save();
             }
 
             DB::commit();
             return \response()->json([
                 'response' => Response::HTTP_OK,
                 'type' => 'success',
-                'message' => 'Post created Successfully'
+                'message' => 'Testimonial created Successfully'
             ]);
 
         }catch (\Exception $exception){

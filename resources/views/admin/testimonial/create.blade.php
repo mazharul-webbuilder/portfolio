@@ -17,7 +17,7 @@
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <form id="clientCreateForm" enctype="multipart/form-data">
+                        <form id="testimonialCreateForm" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group row mb-4">
                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Testimonial Name</label>
@@ -88,7 +88,7 @@
     {{--Client Store--}}
     <script>
         $(document).ready(function () {
-            $('#clientCreateForm').on('submit', function (e) {
+            $('#testimonialCreateForm').on('submit', function (e) {
                 e.preventDefault()
                 $('.error-message').hide()
 
@@ -97,7 +97,7 @@
                 const formData = new FormData(this);
 
                 $.ajax({
-                    url: '{{route('admin.client.store')}}',
+                    url: '{{route('admin.testimonial.store')}}',
                     method: 'POST',
                     data: formData,
                     cache: false,
