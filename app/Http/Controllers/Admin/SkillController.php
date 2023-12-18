@@ -37,7 +37,7 @@ class SkillController extends Controller
             ->addColumn('action', function ($skill){
                 return '<div>
                             <a
-                            href="'.route('admin.education.edit', $skill->id).'"
+                            href="'.route('admin.skills.edit', $skill->id).'"
                             class=" btn btn-primary waves-effect waves-light btn btn-primary"
                         >Edit</a>
                              <button type="button"
@@ -81,6 +81,49 @@ class SkillController extends Controller
                 'response' => Response::HTTP_OK,
                 'type' => 'success',
                 'message' => 'Skill Added Successfully'
+            ]);
+
+        }catch (\Exception $exception){
+            DB::rollBack();
+            return \response()->json([
+                'response' => Response::HTTP_INTERNAL_SERVER_ERROR,
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
+    }
+    /**
+     * Edit skill
+    */
+    public function edit(ProffessionalSkill $skill): View
+    {
+        return \view('admin.skill.edit', compact('skill'));
+    }
+
+    /**
+     * Update  Data
+     */
+    public function update(Request $request): JsonResponse
+    {
+        $request->validate([
+            'title' => 'required|min:2',
+            'value' => 'required|numeric|max:100'
+        ]);
+
+        try {
+            DB::beginTransaction();
+
+            $education = ProffessionalSkill::find($request->id);
+
+            $datas = $request->except('_token');
+
+            $education->update($datas);
+
+            DB::commit();
+            return \response()->json([
+                'response' => Response::HTTP_OK,
+                'type' => 'success',
+                'message' => 'Skill Updated Successfully'
             ]);
 
         }catch (\Exception $exception){

@@ -97,6 +97,8 @@ Route::middleware('admin')->prefix('admin/')->name('admin.')->group(function (){
     Route::get('/skills/datatable', [SkillController::class, 'datatable'])->name('skills.datatable');
     Route::get('/skills/create', [SkillController::class, 'create'])->name('skills.create');
     Route::post('/skill/store', [SkillController::class, 'store'])->name('skills.store');
+    Route::get('/skill/edit/{skill}', [SkillController::class, 'edit'])->name('skills.edit');
+    Route::post('/skill/update', [SkillController::class, 'update'])->name('update.skills');
     Route::post('/skills/delete', [SkillController::class, 'delete'])->name('skill.delete');
 
     // Setting
