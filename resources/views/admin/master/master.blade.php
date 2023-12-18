@@ -276,6 +276,12 @@
                             <span>Education</span>
                         </a>
                     </li>
+                        <li>
+                        <a href="{{route('admin.skills')}}" class="waves-effect">
+                            <i class="bx bx-strikethrough"></i>
+                            <span>Skills</span>
+                        </a>
+                    </li>
                     @endif
 
                     <li class="menu-title">Apps</li>

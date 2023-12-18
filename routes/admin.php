@@ -92,6 +92,10 @@ Route::middleware('admin')->prefix('admin/')->name('admin.')->group(function (){
     Route::post('/educations/update', [EducationController::class, 'update'])->name('education.update');
     Route::post('/educations/datatable', [EducationController::class, 'delete'])->name('education.delete');
 
+    // Skills
+    Route::get('/skills', [SkillController::class, 'index'])->name('skills');
+    Route::get('/skills/datatable', [SkillController::class, 'datatable'])->name('skills.datatable');
+
     // Setting
     Route::get('/general/setting', [GeneralSettingController::class, 'index'])->name('general.setting');
     Route::post('/general/setting', [GeneralSettingController::class, 'updateGeneralSetting'])->name('general.setting.update');
