@@ -88,7 +88,8 @@ Route::middleware('admin')->prefix('admin/')->name('admin.')->group(function (){
     Route::get('/get/educations/datatable', [EducationController::class, 'datatable'])->name('educations.datatable');
     Route::get('/educations/create', [EducationController::class, 'create'])->name('education.create');
     Route::post('/educations/store', [EducationController::class, 'store'])->name('education.store');
-    Route::get('/educations/datatable', [EducationController::class, 'edit'])->name('education.edit');
+    Route::get('/educations/edit/{education}', [EducationController::class, 'edit'])->name('education.edit');
+    Route::post('/educations/update', [EducationController::class, 'update'])->name('education.update');
     Route::post('/educations/datatable', [EducationController::class, 'delete'])->name('education.delete');
 
     // Setting

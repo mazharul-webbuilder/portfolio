@@ -90,6 +90,45 @@ class EducationController extends Controller
     }
 
     /**
+     * Edit Education
+    */
+    public function edit(Education $education) : View
+    {
+        return \view('admin.education.edit', compact('education'));
+    }
+
+    /**
+     * Update  Data
+     */
+    public function update(EducationCreateRequest $request): JsonResponse
+    {
+        try {
+            DB::beginTransaction();
+
+            $education = Education::find($request->id);
+
+            $datas = $request->validated();
+
+            $education->update($datas);
+
+            DB::commit();
+            return \response()->json([
+                'response' => Response::HTTP_OK,
+                'type' => 'success',
+                'message' => 'Education Qualification Updated Successfully'
+            ]);
+
+        }catch (\Exception $exception){
+            DB::rollBack();
+            return \response()->json([
+                'response' => Response::HTTP_INTERNAL_SERVER_ERROR,
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
+    }
+
+    /**
      * Delete
      */
     public function delete(Request $request): JsonResponse
