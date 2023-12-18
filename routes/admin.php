@@ -58,6 +58,8 @@ Route::middleware('admin')->prefix('admin/')->name('admin.')->group(function (){
     Route::get('/portfolios/datatable', [PortfolioController::class, 'datatable'])->name('portfolio.datatable');
     Route::get('/portfolios/create', [PortfolioController::class, 'create'])->name('portfolio.create');
     Route::post('/portfolios/create', [PortfolioController::class, 'store'])->name('portfolio.store');
+    Route::get('/portfolios/edit/{portfolio}', [PortfolioController::class, 'edit'])->name('portfolio.edit');
+    Route::post('/portfolios/update', [PortfolioController::class, 'update'])->name('portfolio.update');
     Route::post('/portfolios/delete', [PortfolioController::class, 'delete'])->name('portfolio.delete');
     // Pricing
     Route::get('/pricing', [PricingController::class, 'index'])->name('pricing');

@@ -44,10 +44,10 @@ class PortfolioController extends Controller
             })
             ->addColumn('action', function ($portfolio){
                 return '<div>
-                            <button type="button"
-                            data-toggle="modal"
+                            <a
+                            href="'.route('admin.portfolio.edit', $portfolio->id).'"
                             class="portfolioEditBtn btn btn-primary waves-effect waves-light btn btn-primary"
-                            data-id="' . $portfolio->id . '">Edit</button>
+                            data-id="' . $portfolio->id . '">Edit</a>
                              <button type="button"
                             data-toggle="modal"
                             class="portfolioDeleteBtn btn btn-danger waves-effect waves-light btn btn-primary"
@@ -91,6 +91,57 @@ class PortfolioController extends Controller
                 'message' => 'Portfolio created successfully'
             ]);
         } catch (\Exception $exception) {
+            DB::rollBack();
+            return \response()->json([
+                'response' => Response::HTTP_INTERNAL_SERVER_ERROR,
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
+    }
+
+    /**
+     * Show Edit page
+    */
+    public function edit(Portfolio $portfolio): View
+    {
+        $portfolioCategories = PortfolioCategory::all();
+
+        return \view('admin.portfolio.edit', compact('portfolio', 'portfolioCategories'));
+    }
+
+    /**
+     * Update Client Data
+     */
+    public function update(PortfolioCreateRequest $reqeust): JsonResponse
+    {
+        try {
+            DB::beginTransaction();
+            $portfolio = Portfolio::find($reqeust->id);
+
+            $datas = $reqeust->validated();
+
+            $datas['favorite'] = rand(10, 500);
+
+            unset($datas['image']);
+
+            $portfolio->update($datas);
+
+            if ($reqeust->hasFile('image')) {
+                if (!is_null($portfolio->image)){
+                    delete_2_type_image_if_exist_latest($portfolio->image, 'portfolio');
+                }
+                $portfolio->image = store_2_type_image_nd_get_image_name(request: $reqeust, folderName: 'portfolio', resize_width: 800, resize_height: 600);
+                $portfolio->save();
+            }
+            DB::commit();
+            return \response()->json([
+                'response' => Response::HTTP_OK,
+                'type' => 'success',
+                'message' => 'Client Info Updated Successfully'
+            ]);
+
+        }catch (\Exception $exception){
             DB::rollBack();
             return \response()->json([
                 'response' => Response::HTTP_INTERNAL_SERVER_ERROR,
