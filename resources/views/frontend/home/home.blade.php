@@ -132,7 +132,8 @@
                 <div class="row row--25 mt--10 mt_md--10 mt_sm--10">
                     @foreach($portfolios as $portfolio)
                     <!-- Start Single Portfolio -->
-                    <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true" class="col-lg-6 col-xl-4 col-md-6 col-12 mt--50 mt_md--30 mt_sm--30">
+                    <div data-aos="fade-up" data-id="{{$portfolio->id}}" data-aos-delay="100" data-aos-once="true"
+                         class="portfolioModalBtn col-lg-6 col-xl-4 col-md-6 col-12 mt--50 mt_md--30 mt_sm--30">
                         <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
                             <div class="inner">
                                 <div class="thumbnail">
@@ -951,7 +952,7 @@
                             <div class="col-lg-6">
                                 <div class="portfolio-popup-thumbnail">
                                     <div class="image">
-                                        <img class="w-100" src="{{asset('frontend/assets')}}/images/portfolio/portfolio-04.jpg" alt="slide">
+                                        <img class="w-100 portfolioImage"  src="" alt="slide">
                                     </div>
                                 </div>
                             </div>
@@ -959,10 +960,10 @@
                             <div class="col-lg-6">
                                 <div class="text-content">
                                     <h3>
-                                        <span>Featured - Design</span> App Design Development.
+                                        <span class="portfoliCategory">Featured - Design</span>
                                     </h3>
-                                    <p class="mb--30">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate distinctio assumenda explicabo veniam temporibus eligendi.</p>
-                                    <p>Consectetur adipisicing elit. Cupiditate distinctio assumenda. dolorum alias suscipit rerum maiores aliquam earum odit, nihil culpa quas iusto hic minus!</p>
+                                    <h3 class="portfoliTitle"></h3>
+                                    <p class="portfolidescription"></p>
                                     <div class="button-group mt--20">
                                         <a href="#" class="rn-btn thumbs-icon">
                                             <span>LIKE THIS</span>
@@ -1785,6 +1786,26 @@
                         $('#blogTitle').text(data.title)
                         $('#blogDescription').text(data.description)
                         $('#blogImage').attr('src', data.thumbnail)
+                    }
+                })
+            })
+        })
+    </script>
+    <script>
+        $('document').ready(function () {
+            $('.portfolioModalBtn').on('click', function (){
+                const portfolioId = $(this).data('id')
+                $.ajax({
+                    url: '{{route('portfolio.details')}}',
+                    method: 'GET',
+                    data: {
+                        id: portfolioId
+                    },
+                    success: function (data) {
+                        $('.portfolioImage').attr('src', data.thumbnail)
+                        $('.portfoliCategory').text( data.category)
+                        $('.portfoliTitle').text( data.title)
+                        $('.portfolidescription').text( data.description)
                     }
                 })
             })
