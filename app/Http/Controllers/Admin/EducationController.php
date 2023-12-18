@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EducationCreateRequest;
 use App\Models\Education;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
@@ -51,6 +52,42 @@ class EducationController extends Controller
             ->make(true);
     }
 
+    /**
+     * Show education qualification create page
+    */
+    public function create(): View
+    {
+        return \view('admin.education.create');
+    }
+
+    /**
+     * Post new blog
+     */
+    public function store(EducationCreateRequest $request): JsonResponse
+    {
+        try {
+            DB::beginTransaction();
+
+            $datas = $request->validated();
+
+            Education::create($datas);
+
+            DB::commit();
+            return \response()->json([
+                'response' => Response::HTTP_OK,
+                'type' => 'success',
+                'message' => 'Education Qualification Added Successfully'
+            ]);
+
+        }catch (\Exception $exception){
+            DB::rollBack();
+            return \response()->json([
+                'response' => Response::HTTP_INTERNAL_SERVER_ERROR,
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
+    }
 
     /**
      * Delete
