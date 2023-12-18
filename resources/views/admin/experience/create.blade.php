@@ -5,48 +5,52 @@
 @endsection
 
 @section('title')
-    Create Education
+    Create Experience
 @endsection
 @section('content')
     <div class="container mt-5 pb-5">
         <div class="row" style="margin-top: 80px">
             <div class="col-md-12">
                 <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center mb-4">
-                    <h2 class="mb-0 text-light">Education Create</h2>
+                    <h2 class="mb-0 text-light">Experience Create</h2>
                     <a href="{{\Illuminate\Support\Facades\URL::previous()}}" class="btn btn-success">Back</a>
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <form id="EducationCreateForm" enctype="multipart/form-data">
+                        <form id="ExperienceCreateForm" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group row mb-4">
-                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Name</label>
+                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Compnay Name</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="name" id="horizontal-firstname-input" placeholder="Enter here">
+                                    <input type="text" class="form-control" name="company_name" id="horizontal-firstname-input" placeholder="Enter here">
                                 </div>
                             </div>
                             <div class="form-group row mb-4">
-                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Title</label>
+                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Designation</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="title" id="horizontal-firstname-input" placeholder="Enter here">
+                                    <input type="text" class="form-control" name="designation" id="horizontal-firstname-input" placeholder="Enter here">
                                 </div>
                             </div>
                             <div class="form-group row mb-4">
-                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Session From</label>
+                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Staring Year</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="session_from" id="horizontal-firstname-input" placeholder="Ex: 2016">
+                                    <input type="text" class="form-control" name="starting_year" id="horizontal-firstname-input" placeholder="Ex: 2016">
                                 </div>
                             </div>
                             <div class="form-group row mb-4">
-                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Session To</label>
+                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Ending Year</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="session_to" id="horizontal-firstname-input" placeholder="Ex: 2020">
+                                    <input type="text" class="form-control" name="ending_year" id="horizontal-firstname-input" placeholder="Ex: 2020">
                                 </div>
                             </div>
                             <div class="form-group row mb-4">
-                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Score</label>
+                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Is Current</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="score" id="horizontal-firstname-input" placeholder="Ex: 3.49">
+                                    <select name="is_current" id="" class="form-control">
+                                        <option value="">Select Option</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">NO</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group row mb-4">
@@ -75,7 +79,7 @@
     {{--Client Store--}}
     <script>
         $(document).ready(function () {
-            $('#EducationCreateForm').on('submit', function (e) {
+            $('#ExperienceCreateForm').on('submit', function (e) {
                 e.preventDefault()
                 $('.error-message').hide()
 
@@ -84,7 +88,7 @@
                 const formData = new FormData(this);
 
                 $.ajax({
-                    url: '{{route('admin.education.store')}}',
+                    url: '{{route('admin.experience.store')}}',
                     method: 'POST',
                     data: formData,
                     cache: false,
