@@ -41,7 +41,7 @@ class TestimonialController extends Controller
             ->addColumn('action', function ($testimonial){
                 return '<div>
                             <a
-                            href="'.route('admin.blog.edit', ['id' => $testimonial->id]).'"
+                            href="'.route('admin.testimonial.edit', $testimonial->id).'"
                             class=" btn btn-primary waves-effect waves-light btn btn-primary"
                         >Edit</a>
                              <button type="button"
@@ -100,32 +100,32 @@ class TestimonialController extends Controller
     /**
      * Edit Blog
      */
-    public function edit(Blog $id): View
+    public function edit(Testimonial $testimonial): View
     {
-        $blogCategories = BlogCategory::all();
-        return \view('admin.blog.edit', compact('id', 'blogCategories'));
+        return \view('admin.testimonial.edit', compact('testimonial'));
     }
 
     /**
      * Update  Data
      */
-    public function update(PostCreateRequest $request): JsonResponse
+    public function update(TestimonialCreateRequest $request): JsonResponse
     {
         try {
             DB::beginTransaction();
 
-            $blog = Blog::find($request->id);
+            $testimonial = Testimonial::find($request->id);
 
             $datas = $request->except('_token', 'image');
 
-            $blog->update($datas);
+            $testimonial->update($datas);
 
             if ($request->hasFile('image')) {
-                if (!is_null($blog->image)) {
-                    delete_2_type_image_if_exist_latest($blog->image, 'blog-image');
+                if (!is_null($testimonial->avatar)) {
+                    delete_2_type_image_if_exist_latest($testimonial->avatar, 'testimonial');
                 }
-                $blog->image = store_2_type_image_nd_get_image_name($request, 'blog-image', 800, 600);
-                $blog->save();
+                $testimonial->avatar = store_2_type_image_nd_get_image_name(request: $request, folderName:  'testimonial', resize_width: 335, resize_height: 252);
+
+                $testimonial->save();
             }
 
 
@@ -133,7 +133,7 @@ class TestimonialController extends Controller
             return \response()->json([
                 'response' => Response::HTTP_OK,
                 'type' => 'success',
-                'message' => 'Blog Post Updated Successfully'
+                'message' => 'Testimonial Updated Successfully'
             ]);
 
         }catch (\Exception $exception){

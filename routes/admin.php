@@ -76,6 +76,8 @@ Route::middleware('admin')->prefix('admin/')->name('admin.')->group(function (){
     Route::get('/testimonials/datatable', [TestimonialController::class, 'datatable'])->name('testimonial.datatable');
     Route::get('/testimonials/create', [TestimonialController::class, 'create'])->name('testimonial.create');
     Route::post('/testimonials/store', [TestimonialController::class, 'store'])->name('testimonial.store');
+    Route::post('/testimonials/update', [TestimonialController::class, 'update'])->name('testimonial.update');
+    Route::get('/testimonials/edit/{testimonial}', [TestimonialController::class, 'edit'])->name('testimonial.edit');
     Route::post('/testimonials/delete', [TestimonialController::class, 'delete'])->name('testimonial.delete');
 
     // Setting
