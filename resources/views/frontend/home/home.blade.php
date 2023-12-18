@@ -164,6 +164,7 @@
         <!-- End portfolio Area -->
         @endif
 
+        @if(!is_null(\App\Models\Menu::where(['constant_name' => 'resume', 'status' => 1])->first()))
         <!-- Start Resume Area -->
         <div class="rn-resume-area rn-section-gap section-separator" id="resume">
             <div class="container">
@@ -547,6 +548,7 @@
             </div>
         </div>
         <!-- End Resume Area -->
+        @endif
         <!-- Start Testimonia Area  -->
         <div class="rn-testimonial-area rn-section-gap section-separator" id="testimonial">
             <div class="container">

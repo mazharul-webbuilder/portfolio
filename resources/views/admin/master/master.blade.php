@@ -265,10 +265,18 @@
                     @endif
                     <li>
                         <a href="{{route('admin.testimonials')}}" class="waves-effect">
-                            <i class="bx bx-news"></i>
+                            <i class="bx bx-terminal"></i>
                             <span>Testimonials</span>
                         </a>
                     </li>
+                    @if(!is_null(\App\Models\Menu::where(['constant_name' => 'resume', 'status' => 1])->first()))
+                    <li>
+                        <a href="{{route('admin.educations')}}" class="waves-effect">
+                            <i class="bx bx-book-content"></i>
+                            <span>Education</span>
+                        </a>
+                    </li>
+                    @endif
 
                     <li class="menu-title">Apps</li>
                     <li>

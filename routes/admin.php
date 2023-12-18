@@ -13,7 +13,10 @@ use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\TestimonialController;
-
+use App\Http\Controllers\Admin\EducationController;
+use App\Http\Controllers\Admin\SkillController;
+use App\Http\Controllers\Admin\ExperienceController;
+use App\Http\Controllers\Admin\InterviewController;
 /**
  * Admin Routes
 */
@@ -79,6 +82,12 @@ Route::middleware('admin')->prefix('admin/')->name('admin.')->group(function (){
     Route::post('/testimonials/update', [TestimonialController::class, 'update'])->name('testimonial.update');
     Route::get('/testimonials/edit/{testimonial}', [TestimonialController::class, 'edit'])->name('testimonial.edit');
     Route::post('/testimonials/delete', [TestimonialController::class, 'delete'])->name('testimonial.delete');
+
+    // Educations
+    Route::get('/educations', [EducationController::class, 'index'])->name('educations');
+    Route::get('/get/educations/datatable', [EducationController::class, 'datatable'])->name('educations.datatable');
+    Route::get('/educations/datatable', [EducationController::class, 'edit'])->name('education.edit');
+    Route::post('/educations/datatable', [EducationController::class, 'delete'])->name('education.delete');
 
     // Setting
     Route::get('/general/setting', [GeneralSettingController::class, 'index'])->name('general.setting');
