@@ -276,10 +276,16 @@
                             <span>Education</span>
                         </a>
                     </li>
-                        <li>
+                    <li>
                         <a href="{{route('admin.skills')}}" class="waves-effect">
                             <i class="bx bx-strikethrough"></i>
                             <span>Skills</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('admin.experiences')}}" class="waves-effect">
+                            <i class="bx bx-accessibility"></i>
+                            <span>Experiences</span>
                         </a>
                     </li>
                     @endif
