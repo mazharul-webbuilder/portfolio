@@ -5,61 +5,65 @@
 @endsection
 
 @section('title')
-    Edit Education
+    Create Experience
 @endsection
 @section('content')
     <div class="container mt-5 pb-5">
         <div class="row" style="margin-top: 80px">
             <div class="col-md-12">
                 <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center mb-4">
-                    <h2 class="mb-0 text-light">Education Edit</h2>
+                    <h2 class="mb-0 text-light">Experience Create</h2>
                     <a href="{{\Illuminate\Support\Facades\URL::previous()}}" class="btn btn-success">Back</a>
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <form id="EducationUpdateForm" enctype="multipart/form-data">
+                        <form id="ExperienceUpdateForm" enctype="multipart/form-data">
                             @csrf
-                            <input type="hidden" name="id" value="{{$education->id}}">
+                            <input type="hidden" name="id" value="{{$experience->id}}">
                             <div class="form-group row mb-4">
-                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Name</label>
+                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Company Name</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" value="{{$education->name}}" name="name" id="horizontal-firstname-input" placeholder="Enter here">
+                                    <input type="text" value="{{$experience->company_name}}" class="form-control" name="company_name" id="horizontal-firstname-input" placeholder="Enter here">
                                 </div>
                             </div>
                             <div class="form-group row mb-4">
-                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Title</label>
+                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Designation</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" value="{{$education->title}}" name="title" id="horizontal-firstname-input" placeholder="Enter here">
+                                    <input type="text" value="{{$experience->designation}}" class="form-control" name="designation" id="horizontal-firstname-input" placeholder="Enter here">
                                 </div>
                             </div>
                             <div class="form-group row mb-4">
-                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Session From</label>
+                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Staring Year</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" value="{{$education->session_from}}" name="session_from" id="horizontal-firstname-input" placeholder="Ex: 2016">
+                                    <input type="text" value="{{$experience->starting_year}}" class="form-control" name="starting_year" id="horizontal-firstname-input" placeholder="Ex: 2016">
                                 </div>
                             </div>
                             <div class="form-group row mb-4">
-                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Session To</label>
+                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Ending Year</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" value="{{$education->session_to}}" name="session_to" id="horizontal-firstname-input" placeholder="Ex: 2020">
+                                    <input type="text" value="{{$experience->ending_year}}" class="form-control" name="ending_year" id="horizontal-firstname-input" placeholder="Ex: 2020">
                                 </div>
                             </div>
                             <div class="form-group row mb-4">
-                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Score</label>
+                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Is Current</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="score" value="{{$education->score}}" id="horizontal-firstname-input" placeholder="Ex: 3.49">
+                                    <select name="is_current" id="" class="form-control">
+                                        <option value="">Select Option</option>
+                                        <option value="1" {{$experience->is_current == 1 ? 'selected' : ''}}>Yes</option>
+                                        <option value="0" {{$experience->is_current == 0 ? 'selected' : ''}}>NO</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group row mb-4">
                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Description</label>
                                 <div class="col-sm-9">
-                                    <textarea name="description" id="" cols="30" rows="5" class="form-control">{{$education->description}}</textarea>
+                                    <textarea name="description" id="" cols="30" rows="5" class="form-control">{{$experience->description}}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row justify-content-end">
                                 <div class="col-sm-9">
                                     <div>
-                                        <button type="submit" class="btn btn-primary w-md">Update</button>
+                                        <button type="submit" class="btn btn-primary w-md">Create</button>
                                     </div>
                                 </div>
                             </div>
@@ -76,7 +80,7 @@
     {{--Client Store--}}
     <script>
         $(document).ready(function () {
-            $('#EducationUpdateForm').on('submit', function (e) {
+            $('#ExperienceUpdateForm').on('submit', function (e) {
                 e.preventDefault()
                 $('.error-message').hide()
 
@@ -85,7 +89,7 @@
                 const formData = new FormData(this);
 
                 $.ajax({
-                    url: '{{route('admin.education.update')}}',
+                    url: '{{route('admin.experience.update')}}',
                     method: 'POST',
                     data: formData,
                     cache: false,

@@ -38,7 +38,7 @@ class ExperienceController extends Controller
             ->addColumn('action', function ($experience){
                 return '<div>
                             <a
-                            href="'.route('admin.skills.edit', $experience->id).'"
+                            href="'.route('admin.experience.edit', $experience->id).'"
                             class=" btn btn-primary waves-effect waves-light btn btn-primary"
                         >Edit</a>
                              <button type="button"
@@ -77,6 +77,45 @@ class ExperienceController extends Controller
                 'response' => Response::HTTP_OK,
                 'type' => 'success',
                 'message' => 'Experiences Added Successfully'
+            ]);
+
+        }catch (\Exception $exception){
+            DB::rollBack();
+            return \response()->json([
+                'response' => Response::HTTP_INTERNAL_SERVER_ERROR,
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
+    }
+
+    /**
+     * Edit
+    */
+    public function edit(Experience $experience): View
+    {
+        return \view('admin.experience.edit', compact('experience'));
+    }
+
+    /**
+     * Update  Data
+     */
+    public function update(ExperienceAddRequest $request): JsonResponse
+    {
+        try {
+            DB::beginTransaction();
+
+            $experience = Experience::find($request->id);
+
+            $datas = $request->validated();
+
+            $experience->update($datas);
+
+            DB::commit();
+            return \response()->json([
+                'response' => Response::HTTP_OK,
+                'type' => 'success',
+                'message' => 'Experiences Updated Successfully'
             ]);
 
         }catch (\Exception $exception){
