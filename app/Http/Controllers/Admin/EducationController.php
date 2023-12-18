@@ -61,7 +61,7 @@ class EducationController extends Controller
     }
 
     /**
-     * Post new blog
+     * Store Education
      */
     public function store(EducationCreateRequest $request): JsonResponse
     {

@@ -13,7 +13,7 @@
             <div class="col-md-12">
                 <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center mb-4">
                     <h2 class="mb-0 text-light">Professional Skills</h2>
-                    <a href="{{route('admin.education.create')}}" class="btn btn-success">Add New Skill</a>
+                    <a href="{{route('admin.skills.create')}}" class="btn btn-success">Add New Skill</a>
                 </div>
                 <table class="table table-striped table-bordered" id="dataTable" style="width: 100% !important;">
                     <thead>

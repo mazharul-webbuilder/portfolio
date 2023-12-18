@@ -5,26 +5,20 @@
 @endsection
 
 @section('title')
-    Create Education
+    Create Skill
 @endsection
 @section('content')
     <div class="container mt-5 pb-5">
         <div class="row" style="margin-top: 80px">
             <div class="col-md-12">
                 <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center mb-4">
-                    <h2 class="mb-0 text-light">Education Create</h2>
+                    <h2 class="mb-0 text-light">Skill Create</h2>
                     <a href="{{\Illuminate\Support\Facades\URL::previous()}}" class="btn btn-success">Back</a>
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <form id="EducationCreateForm" enctype="multipart/form-data">
+                        <form id="SkillCreateForm" enctype="multipart/form-data">
                             @csrf
-                            <div class="form-group row mb-4">
-                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Name</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="name" id="horizontal-firstname-input" placeholder="Enter here">
-                                </div>
-                            </div>
                             <div class="form-group row mb-4">
                                 <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Title</label>
                                 <div class="col-sm-9">
@@ -32,27 +26,9 @@
                                 </div>
                             </div>
                             <div class="form-group row mb-4">
-                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Session From</label>
+                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Value</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="session_from" id="horizontal-firstname-input" placeholder="Ex: 2016">
-                                </div>
-                            </div>
-                            <div class="form-group row mb-4">
-                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Session To</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="session_to" id="horizontal-firstname-input" placeholder="Ex: 2020">
-                                </div>
-                            </div>
-                            <div class="form-group row mb-4">
-                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Score</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="score" id="horizontal-firstname-input" placeholder="Ex: 3.49">
-                                </div>
-                            </div>
-                            <div class="form-group row mb-4">
-                                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Description</label>
-                                <div class="col-sm-9">
-                                    <textarea name="description" id="" cols="30" rows="5" class="form-control"></textarea>
+                                    <input type="text" class="form-control" name="value" id="horizontal-firstname-input" placeholder="Enter here">
                                 </div>
                             </div>
                             <div class="form-group row justify-content-end">
@@ -75,7 +51,7 @@
     {{--Client Store--}}
     <script>
         $(document).ready(function () {
-            $('#EducationCreateForm').on('submit', function (e) {
+            $('#SkillCreateForm').on('submit', function (e) {
                 e.preventDefault()
                 $('.error-message').hide()
 
@@ -84,7 +60,7 @@
                 const formData = new FormData(this);
 
                 $.ajax({
-                    url: '{{route('admin.education.store')}}',
+                    url: '{{route('admin.skills.store')}}',
                     method: 'POST',
                     data: formData,
                     cache: false,

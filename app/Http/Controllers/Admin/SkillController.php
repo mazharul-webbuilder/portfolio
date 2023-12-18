@@ -52,6 +52,49 @@ class SkillController extends Controller
     }
 
     /**
+     * Show skill create page
+    */
+    public function create(): View
+    {
+        return \view('admin.skill.create');
+    }
+
+    /**
+     * Post new blog
+     */
+    public function store(Request $request): JsonResponse
+    {
+        $request->validate([
+            'title' => 'required|min:2',
+            'value' => 'required|numeric|max:100'
+        ]);
+
+        try {
+            DB::beginTransaction();
+
+            $datas = $request->except('_token');
+
+            ProffessionalSkill::create($datas);
+
+            DB::commit();
+            return \response()->json([
+                'response' => Response::HTTP_OK,
+                'type' => 'success',
+                'message' => 'Skill Added Successfully'
+            ]);
+
+        }catch (\Exception $exception){
+            DB::rollBack();
+            return \response()->json([
+                'response' => Response::HTTP_INTERNAL_SERVER_ERROR,
+                'type' => 'error',
+                'message' => $exception->getMessage()
+            ]);
+        }
+    }
+
+
+    /**
      * Delete
      */
     public function delete(Request $request): JsonResponse
